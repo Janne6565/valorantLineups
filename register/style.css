@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #1f1e1e;
+}
+
+#app {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    margin-top: 0;
+    background-color: #202020;
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(228, 228, 228);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 35px;
+
+    padding: 1.3vh 50px;
+
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+nav>span {
+    display: flex;
+    gap: 70px;
+}
+
+nav>span>a {
+    font-weight: 500;
+    text-decoration: none;
+    color: rgb(192, 195, 200);
+    transition: all 0.3s ease-in-out;
+}
+
+nav>.rightSide>a:hover {
+    color: rgb(93, 93, 93);
+}
+
+
+
+.header {
+    padding-top: 0;
+    margin-top: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 92.4vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: url("../assets/Rectangle-1.webp");
+    background-size: cover;
+    background-position: center;
+}
+
+.header>.leftSide {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.header>.leftSide>.inputs > input {
+    width: 40%;
+    height: 50px;
+    border-radius: 15px;
+    padding: 5px 20px;
+    font-size: 25px;
+    border: thin solid rgb(228, 228, 228);
+    transition: all ease .3s;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.header > .leftSide > .inputs {
+    display: flex; 
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.header > .leftSide > .inputs > a {
+    width: 43%;
+    color: white;
+    font-family: 'Work Sans', Courier, monospace;
+    font-size: 20px;
+    text-decoration-thickness: 2px;
+}
+
+.header>.leftSide>.inputs > input:focus {
+    outline: none;
+    border: thin solid rgb(57, 57, 57);
+    background-color: rgb(57, 57, 57);
+    color: white;
+}
+
+.header>.leftSide>button {
+    width: 40%;
+    height: 50px;
+    padding: 0 20px;
+    border-radius: 15px;
+    font-size: 25px;
+    border: thin solid rgb(228, 228, 228);
+    transition: all ease .3s;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.header>.leftSide>button:hover {
+    outline: none;
+    border: thin solid rgb(57, 57, 57);
+    background-color: rgb(57, 57, 57);
+    color: white;
+}
+
+.header>.leftSide>button:active {
+    box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.75);
+}
+
+.header > .leftSide > a {
+    font-family: 'Work Sans', cursive;
+    font-size: 1rem;
+    margin: 0;
+    color: rgb(228, 228, 228);
+    text-decoration: none;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.35);
+    transition: all ease .3s;
+}
+
+.error {
+    font-family: 'Work Sans', cursive;
+    font-size: 20px; 
+    margin: 0;
+    color: rgb(150, 150, 150);
+    text-decoration: none;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.35);
+    transition: all ease .3s;
+    width: 43%;
+}
+
+
+.header>section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header>section>h2 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: rgb(228, 228, 228);
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.35);
+    margin: 0;
+    text-align: center;
+}
+
+.header>section>h1 {
+    font-family: 'Bebas Neue',
+        sans-serif;
+    letter-spacing: 10px;
+    font-size: 10rem;
+    font-weight: 300;
+    color: rgb(228, 228, 228);
+    font-weight: 300;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.35);
+    margin: 0;
+}
+
+.header>section>h2>a {
+    color: lightgray;
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-shadow: none;
+}
+
+.header>.buttons {
+    display: flex;
+    gap: 50px;
+}
+
+.header>.buttons>button {
+    font-size: 2.5rem;
+    padding: 20px 35px;
+    font-family: 'Work Sans', sans-serif;
+    background-color: white;
+    border: thin solid rgb(228, 228, 228);
+    border-radius: 25px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    transition: all ease .3s;
+    cursor: pointer;
+}
+
+.header>.buttons>button:hover {
+    background-color: rgb(57, 57, 57);
+    border-color: rgb(57, 57, 57);
+    color: rgb(161, 161, 161);
+}

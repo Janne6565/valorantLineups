@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./assets/icon.ico" type="image/x-icon">
+    <title>Sync Up</title>
+</head>
+
+<body>
+    <section id="app">
+        <nav>
+            <span class="leftSide">
+                <a href="#">
+                    <b>Sync Up</b>
+                </a>
+            </span>
+
+            <span class="rightSide">
+                <a v-for="header in navHeaders" :href="header.link">{{header.title}}</a>
+            </span>
+        </nav>
+
+
+        <section class="header">
+            <span>
+                <h1>Sync Up</h1><br>
+                <h2>Share your Strats and Lineups</h2>
+            </span>
+            <div class="buttons">
+                <button onclick="redirect('./home')">Explore Lineups</button>
+                <button onclick="redirect('./login')">Log In</button> 
+            </div>
+        </section>
+
+    </section>
+    <script src="./vue.min.js"></script>
+    <script src="./util.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>

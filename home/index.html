@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/icon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://kit.fontawesome.com/72f0856b39.js" crossorigin="anonymous"></script>
+    <title>Sync Up</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="popup" v-if="isLineupShown">
+            <div class="background" @click="resetPopup()">
+
+            </div>
+            <div class="backgroundImage" v-bind:style="{backgroundImage: 'url(' + selectedLineup.ImageLineup + ')'}">
+                <canvas id="canvasPositionLineup"></canvas>
+            </div>
+            <i class="fa-solid fa-x fa-2x" @click="resetPopup()"></i>
+        </div>
+
+        <nav>
+            <div class="top">
+                <img src="../assets/icon-transparant.svg" alt="Icon" class="icon" @click="redirect('../')"><br>
+                <div class="icon" @click="setPage('home')">
+                    <i class="fa-solid fa-home fa-2x redirectButton redirecthome" data-text="Ingame">
+                    </i>
+                    <div class="toolTip">
+                        Home
+                    </div>
+                </div>
+                <div class="icon" @click="setPage('maps')">
+                    <i class="fa-solid fa-map-location-dot fa-2x redirectButton redirectmaps" data-text="Map">
+                    </i>
+                    <div class="toolTip">
+                        Map Selection
+                    </div>
+                </div>
+                <div class="icon" @click="setPage('ingame')">
+                    <i class="fa-solid fa-gamepad fa-2x redirectButton redirectingame" data-text="Ingame">
+                    </i>
+                    <div class="toolTip">
+                        Ingame
+                    </div>
+                </div>
+                <div class="icon" @click="setPage('upload')">
+                    <i class="fa-solid fa-upload fa-2x redirectButton redirectupload" data-text="Upload">
+                    </i>
+                    <div class="toolTip">
+                        Upload own Lineups
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom">
+                <div class="settingsIcon" @click="setPage('settings')">
+                    <i class="fa-solid fa-gear fa-2x settingsIcon redirectButton redirectsettings"></i>
+                    <div class="toolTip">
+                        Settings
+                    </div>
+                </div>
+                <span class="userIcon redirectButton redirectuser" style="background-color: #232141"
+                    @click="setPage('user')">
+                    <b>{{userData.userIconLetter}}</b>
+                </span>
+            </div>
+        </nav>
+        <section class="mainContent">
+            <section v-if="activePage == 'home'" class="home">
+                <div class="content">
+                    <div class="left">
+                        <div class="homeText">
+                            <h1>Sync Up</h1>
+                            <p>The Meta is changing quickly and its easy to lose the track on all new Strats and
+                                Lineups.</p>
+                            <p>Dont get out of sync, use Sync Up</p>
+                        </div>
+                        <div class="latestLineups">
+                            <div class="header">
+                                <h2>Latest Lineup commisions: </h2>
+                            </div>
+                            <div class="list">
+                                <div class="lineup" v-for="activeLineup in lineups"
+                                    v-bind:style="{backgroundImage: 'url(' + activeLineup.map.image + ')'}"
+                                    @click="showLineup(activeLineup.id)">
+                                    <div class="left">
+                                        <div class="map">
+                                            {{activeLineup.map.name}}
+                                        </div>
+                                        <div class="agent">
+                                            Viper
+                                        </div>
+                                        <div class="date">{{activeLineup.whenReleased}}</div>
+                                    </div>
+                                    <div class="right">
+                                        <img :src="activeLineup.ability.icon" alt="ability" class="abilityIcon">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rightSide">
+                        <img src="../assets/horizontalImages/viper.webp" alt="">
+                    </div>
+                </div>
+            </section>
+
+            <section v-if="activePage == 'maps'" class="mapSection">
+                <div class="topSelection">
+                    <div class="mapScroller">
+                        <div :class="'map mapIcon map' + map.ID" v-for="map in maps"
+                            v-bind:style="{backgroundImage: 'url(' + map.MapPreviewImage + ')'}"
+                            @click="selectMap(map.ID)">
+                            {{map.Name}}
+                        </div>
+                    </div>
+                    <div class="agentScroller">
+                        <div :class="'agent agentSelector agent' + agent.ID" v-for="agent in agents"
+                            v-bind:style="{backgroundImage: 'url(' + agent.DisplayIconPath + ')'}"
+                            @click="selectAgent(agent.ID)">
+                        </div>
+                    </div>
+                    <div class="abilitySelector">
+                        <div :class="'ability abilitySelection ability' + ability.ID" v-for="ability in activeAbilitys"
+                            @click="selectAbility(ability.ID)"
+                            v-bind:style="{backgroundImage: 'url(' + ability.IconPath + ')'}">
+                        </div>
+                    </div>
+                </div>
+
+                <canvas id="canvasMapDisplay" width="1920" height="1080">
+
+                </canvas>
+            </section>
+            <section v-if="activePage == 'upload'" class="uploadSection">
+                <section v-if="!isLoggedIn">
+                    <h1>Login required</h1>
+                    <h2>You need to be <a
+                            href="https://projektejwkk.de/valorantLineups/login?callback=https://projektejwkk.de/valorantLineups/home?page=upload">logged
+                            in</a> to perform this action</h2>
+                </section>
+                <section v-else>
+                    <div class="uploadForm">
+                        <div class="top">
+                            <div class="map-selection">
+                                <h1>Upload</h1>
+                                <div class="selector">
+                                    <label for="Map">Map: </label>
+                                    <select v-model="uploadInput.map" name="Map" id="Map">
+                                        <option value="null" disabled selected hidden>Select Map</option>
+                                        <option v-for="map in maps" v-bind:value="map.ID"
+                                            :selected="map.ID == 1 ? 'true' : 'false'">{{map.Name}}</option>
+                                    </select><br>
+                                </div>
+
+                                <div class="selector">
+                                    <label for="Agent">Agent: </label>
+                                    <select v-model="uploadInput.agent" name="Agent" id="Agent">
+                                        <option value="null" disabled selected hidden>Select Agent</option>
+                                        <option v-for="agent in agents" v-bind:value="agent.ID">{{agent.Name}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="selector">
+                                    <label for="Ability">Ability: </label>
+                                    <select v-model="uploadInput.ability" name="Ability" id="Ability">
+                                        <option value="null" disabled selected hidden>Select Ability</option>
+                                        <option v-for="ability in possibleAbilitys" v-bind:value="ability.ID">
+                                            {{ability.Name}} ({{ability.Slot}})
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="box__input">
+                                    <input class="box__file" type="file" name="file" id="file"/>
+                                    <label for="file">
+                                        <strong>Image of the Angle you have to Look at</strong>
+                                        <span class="box__dragndrop">
+                                            Drop Image Here
+                                        </span>
+                                        .
+                                    </label>
+                                </div>
+                                <div class="box__input">
+                                    <input class="box__file" type="file" name="imagePosition"
+                                        id="imagePosition" />
+                                    <label for="imagePosition">
+                                        <strong>Image of the Spot you have to Stand on</strong>
+                                        <span class="box__dragndrop">
+                                            Drop Image Here
+                                        </span>
+                                        .
+                                    </label>
+                                </div>
+                                <button @click="submitLineup()">Submit Lineup</button>
+                            </div>
+                            <div class="positionSelection">
+                                <canvas id="canvasLineupCreator" width="1920" height="1920">
+                                </canvas>
+                                <p class="hint">
+                                    Press <b>Left Click</b> to select a Spot for you to stand to throw your Lineup
+                                    <br> Press <b>Right Click</b> to select a Spot for your Lineup to Land
+                                    <br> Press <b>Middle Click</b> to
+                                    create a Spot</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </section>
+    </div>
+</body>
+<script src="./vue.min.js"></script>
+<script src="../util.js"></script>
+<script src="./app.js"></script>
+
+</html>

@@ -1,0 +1,641 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+
+body {
+    background-color: #02090d;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    display: flex;
+}
+
+/* Nav Menu */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 6vw;
+    height: 100vh;
+    background-color: #020D14;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 10px 0px #020D14;
+}
+
+
+nav>div>img {
+    width: 100%;
+    transition: all ease .3s;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px 0px #020D14;
+}
+
+nav>div>img:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 15px 0px #7FD5D1;
+}
+
+nav>div {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.icon>i {
+    color: #7FD5D1;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.icon {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.icon .toolTip {
+    font-family: sans-serif;
+    visibility: hidden;
+    background-color: rgb(255, 255, 255);
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 140%;
+    white-space: nowrap;
+    padding: 10px;
+    opacity: 0;
+    transition: all ease .3s;
+}
+
+.icon .toolTip::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgb(255, 255, 255) transparent transparent;
+}
+
+.icon:hover .toolTip {
+    opacity: .6;
+    visibility: visible;
+}
+
+.top {
+    margin-top: 50px;
+    text-align: center;
+    color: #7FD5D1;
+    font-family: 'EB Garamond', serif;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 55px;
+}
+
+.icon>i {
+    padding-left: 0;
+    transition: all ease .3s;
+    font-size: 35px;
+    color: #7fd5d195;
+    box-sizing: border-box;
+    transform: scale(1);
+}
+
+
+.icon:hover>i {
+    cursor: pointer;
+    color: #7FD5D1;
+    padding-left: 20px;
+}
+
+.icon>i.active {
+    cursor: pointer;
+    color: #7FD5D1;
+    padding-left: 20px;
+}
+
+.bottom {
+    margin-top: 50px;
+    text-align: center;
+    color: #7FD5D1;
+    font-family: 'EB Garamond', serif;
+    gap: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    font-size: 45px;
+}
+
+.bottom>.userIcon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    font-family: 'Roboto', sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transform: scale(1);
+    transition: all ease .3s;
+    cursor: pointer;
+}
+
+.bottom>.userIcon:hover {
+    transform: scale(1.2);
+}
+
+.bottom>.userIcon.active {
+    transform: scale(1.3);
+}
+
+.settingsIcon>i {
+    transform:
+        rotate(0deg) scale(1);
+    transition: all ease .3s;
+    color: #7fd5d195;
+
+
+}
+
+.settingsIcon:hover>i {
+    transform: rotate(120deg) scale(1);
+    color: #7FD5D1;
+
+}
+
+.settingsIcon>i.active {
+    transform: rotate(120deg) scale(1.2);
+    color: #7FD5D1;
+}
+
+.settingsIcon>i {
+    font-size: 35px;
+    margin-bottom: 10px;
+    margin: 0;
+}
+
+.settingsIcon {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    color: #7fd5d195;
+    cursor: pointer;
+    text-align: center;
+}
+
+.settingsIcon .toolTip {
+    font-family: sans-serif;
+    visibility: hidden;
+    background-color: rgb(255, 255, 255);
+    color: #000;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: 5px;
+    left: 140%;
+    white-space: nowrap;
+    padding: 10px;
+    opacity: 0;
+    transition: all ease .3s;
+    font-size: 25px;
+    user-select: none;
+}
+
+.settingsIcon .toolTip::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgb(255, 255, 255) transparent transparent;
+}
+
+.settingsIcon:hover .toolTip {
+    opacity: .6;
+    visibility: visible;
+}
+
+
+/* Main Website Content Stuff */
+
+.mainContent {
+    margin-left: 6vw;
+    width: 94vw;
+}
+
+.mainContent>section {
+    width: 94vw;
+    height: 100vh;
+}
+
+.home {
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.home>.content {
+    width: 94vw;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.home>.content>.left {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+}
+
+.home>.content>.left>.homeText {
+    font-size: 25px;
+    font-weight: 400;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 25px;
+
+    height: 30vh;
+    width: 70%;
+}
+
+.home>.content>.left>.homeText>* {
+    margin: 0;
+    padding: 0;
+}
+
+.home>.content>.left>.homeText>h1 {
+    font-size: 45px;
+}
+
+.latestLineups {
+    width: 70%;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.list::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #020D14;
+    border: 1px solid #020D14;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+
+.list::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #3b6a68;
+}
+
+.latestLineups>.header {
+    font-size: 25px;
+}
+
+.latestLineups>.list {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    overflow-x: scroll;
+    overflow-y: visible;
+    padding: 20px 0;
+}
+
+.latestLineups>.list>.lineup {
+    border-radius: 25px;
+
+    display: flex;
+    flex-direction: row;
+
+    width: 15vw;
+    height: 0;
+    padding: 20px;
+    padding-bottom: 25%;
+
+    background-size: cover;
+    background-position: center;
+
+    flex-shrink: 0;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    cursor: pointer;
+
+    transition: all ease .3s;
+
+    user-select: none;
+}
+
+.latestLineups>.list>.lineup:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .8);
+    transform: rotate3d(.5, 1, 0, 20deg);
+}
+
+.lineup>.left>.map {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.lineup>.left>.agent {
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.lineup>.right>.abilityIcon {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    opacity: .7;
+}
+
+.lineup>.left,
+.lineup>.right {
+    width: 50%;
+}
+
+.lineup>.right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.rightSide {
+    display: flex;
+    justify-content: center;
+}
+
+.rightSide>img {
+    width: 80%;
+    height: auto;
+    border-radius: 5%;
+    box-shadow: 0 0 10px #101A25;
+}
+
+.topSelection {
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.topSelection>.mapScroller {
+    height: calc(6vh + 10px);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+}
+
+.topSelection>.mapScroller>.map {
+    width: 15vw;
+    height: 6vh;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5%;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all ease .3s;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 35px;
+    font-family: 'Work Sans', sans-serif;
+    filter: grayscale(50%);
+    transform: translateY(10px);
+
+    user-select: none;
+}
+
+.topSelection>.mapScroller>.map:hover {
+    transform: translateY(5px);
+    filter: grayscale(0%);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.topSelection>.mapScroller>.map.active {
+    filter: grayscale(0%);
+    transform: translateY(0px);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.topSelection>.agentScroller {
+    height: 3vw;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.agentScroller>.agent {
+    width: 3vw;
+    height: 3vw;
+    background-size: cover;
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.4);
+    transition: all ease .3s;
+    cursor: pointer;
+}
+
+.agentScroller>.agent:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.agentScroller>.agent.active {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#canvasMapDisplay {
+    width: auto;
+    height: 50vh;
+    background-color: #02090D;
+}
+
+.mapSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.abilitySelector {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4vw;
+    align-items: center;
+}
+
+.abilitySelector>.ability {
+    width: 3vw;
+    height: 3vw;
+    background-size: cover;
+    border: 2px solid white;
+    background-color: rgba(255, 255, 255, 0.4);
+    transition: all ease .3s;
+    cursor: pointer;
+}
+
+.abilitySelector>.ability:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.abilitySelector>.ability.active {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 100;
+}
+
+.popup>.backgroundImage {
+    width: 70vw;
+    height: calc(70vw * 9 / 16);
+    background-size: cover;
+    background-position: center;
+    text-align: right;
+    z-index: 2;
+}
+
+.popup>.backgroundImage>canvas {
+    width: 20%;
+    height: auto;
+    position: relative;
+    top: 0;
+    right: 0;
+}
+
+.popup>i {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 35px;
+    color: white;
+    cursor: pointer;
+    padding: 20px 30px;
+    transform: scale(1);
+    transition: all ease .3s;
+    z-index: 3;
+}
+
+.popup>i:hover {
+    transform: scale(1.1);
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 1;
+}
+
+.uploadSection {
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.uploadSection>section {
+    height: 100vh;
+    display: flex;
+    width: 94vw;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.uploadSection>section>h1 {
+    font-size: 55px;
+}
+
+.uploadSection>section>.uploadForm {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
+}
+
+.uploadForm>.top>.map-selection>h1 {
+    font-size: 55px;
+    padding-left: 10vw;
+    text-align: left;
+}
+
+.uploadForm>.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-family: 'Work Sans', sans-serif;
+}
+
+.top > .map-selection {
+    width: 40%;
+}
+
+.top > .map-selection > .selector {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.top > .positionSelection {
+    width: 60%;
+}
+
+.uploadForm>.top>.positionSelection>canvas {
+    height: 50vh;
+    width: auto;
+    background-color: #020D14;
+    border-color: black;
+    border-radius: 5%;
+}
+
+.selector > label {
+    font-weight: bold;
+}

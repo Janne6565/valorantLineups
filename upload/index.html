@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Image Upload</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h1>Image Upload</h1>
+    <input type="file" id="imageInput">
+    <button onclick="uploadImage()">Upload</button>
+    <div id="output"></div>
+
+    <script>
+        function uploadImage() {
+            var fileInput = document.getElementById('imageInput');
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('image', file);
+
+            $.ajax({
+                url: 'upload.php',
+                type: 'POST',
+                data: formData,
+                dataType: 'json',
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                    if (response.success) {
+                        var imageUrl = response.imageUrl;
+                        document.getElementById('output').innerHTML = 'Image uploaded successfully. URL: ' +
+                            imageUrl;
+                    } else {
+                        document.getElementById('output').innerHTML = 'Image upload failed.';
+                    }
+                },
+                error: function () {
+                    document.getElementById('output').innerHTML = 'Image upload failed.';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
