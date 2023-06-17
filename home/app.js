@@ -432,7 +432,7 @@ let vue = new Vue({
     },
     loadDemoLineups: function () {
       const self = this;
-      getLineups(undefined, undefined, undefined, (status, lineups) => {
+      getLineups(undefined, undefined, undefined, 10, (status, lineups) => {
         if (status == 200) {
           self.lineups = [];
 
@@ -476,6 +476,7 @@ let vue = new Vue({
         [],
         this.selection.ability,
         this.selection.map,
+        null,
         (status, lineups) => {
           if (status == 200) {
             self.activeLineups = lineups;

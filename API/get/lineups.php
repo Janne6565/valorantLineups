@@ -28,18 +28,39 @@ $stmt = null;
 if (isset($_GET["abilityId"])) {
     $abilityId = $_GET["abilityId"];
     $filters["abilityId"] = $abilityId;
-    $query .= "WHERE AbilityId = ? ORDER BY ID DESC";
 
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(1, $abilityId, PDO::PARAM_INT);
+    if (isset($_GET["limit"])) {
+        $limit = $_GET["limit"];
+        $query .= "WHERE AbilityId = ? ORDER BY ID DESC LIMIT ?";
 
+        $stmt = $conn->prepare($query);
+
+        $stmt->bindParam(1, $abilityId, PDO::PARAM_INT);
+        $stmt->bindParam(2, $limit, PDO::PARAM_INT);
+    } else {
+        $query .= "WHERE AbilityId = ? ORDER BY ID DESC";
+
+        $stmt = $conn->prepare($query);
+
+        $stmt->bindParam(1, $abilityId, PDO::PARAM_INT);
+    }
     $stmt->execute();
 } else {
     $filters["abilityId"] = null;
 
     $query .= "ORDER BY ID DESC";
 
-    $stmt = $conn->prepare($query);
+    if (isset($_GET["limit"])) {
+        $limit = $_GET["limit"];
+        $query .= " LIMIT ?";
+
+        $stmt = $conn->prepare($query);
+
+        $stmt->bindParam(1, $limit, PDO::PARAM_INT);
+    } else {
+        $stmt = $conn->prepare($query);
+    }
+
     $stmt->execute();
 }
 
@@ -77,7 +98,7 @@ if ($stmt->rowCount() > 0) {
 
         $fromSpot = $row["FromSpotId"];
         $toSpot = $row["ToSpotId"];
-    
+
         $sql = "SELECT * FROM Spots, Maps WHERE Spots.ID = $fromSpot AND Maps.ID = Spots.MapId;";
         $fromSpotResult = $conn->query($sql);
         $fromSpot = $fromSpotResult->fetch(PDO::FETCH_ASSOC);

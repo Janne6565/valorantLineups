@@ -248,12 +248,13 @@ function getAbilitys(agentId = String, callback = Function) {
  * @param {number[]} tags - Tags the abilities should have
  * @param {Function} callback - The function to call after the request is done with all the abilitys
  */
-function getLineups(tags, abilityId, map, recall = Function) {
+function getLineups(tags, abilityId, map, limit, recall = Function) {
   let xml = new XMLHttpRequest();
   const url = echoParams(API_URL + "get/lineups.php", {
     tags: tags,
     abilityId: abilityId,
     mapId: map,
+    limit: limit,
   });
   xml.open("GET", url);
   xml.onload = function () {
