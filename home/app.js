@@ -53,6 +53,8 @@ let vue = new Vue({
     },
     possibleAbilitys: [],
     spots: [],
+    selectedImage1: "",
+    selectedImage2: "",
   },
   watch: {
     "uploadInput.agent": function () {
@@ -380,6 +382,7 @@ let vue = new Vue({
               },
               false
             );
+            this.selectMap(1);
           });
         }, 100);
       }
@@ -434,6 +437,7 @@ let vue = new Vue({
           self.lineups = [];
 
           for (const lineup of lineups) {
+            console.log(lineup);
             let lineupCorrect = {
               id: lineup["ID"],
               whenReleased: getTimeStringFromTimestamp(
@@ -446,6 +450,9 @@ let vue = new Vue({
               ability: {
                 icon: lineup["Ability"]["IconPath"],
               },
+              agent: {
+                name: lineup["Ability"]["Agent"]["Name"],
+              }
             };
             self.lineups.push(lineupCorrect);
           }
@@ -570,8 +577,17 @@ let vue = new Vue({
             ctx.fillStyle = "#d1e65c";
             ctx.fill();
           };
+
+          console.log(lineup);
+          self.selectedImage2 = lineup.ImageStandOn;
+          self.selectedImage1 = lineup.ImageLineup;
         }
       });
+    },
+    switchImages: function () {
+      let imageBackup = this.selectedImage1;
+      this.selectedImage1 = this.selectedImage2;
+      this.selectedImage2 = imageBackup;
     },
     refreshCanvas: function (recall = Function) {
       console.log("refreshing canvas");
@@ -773,6 +789,12 @@ let vue = new Vue({
       if (e.button == 1) {
         e.preventDefault();
         return false;
+      }
+    };
+
+    document.body.onkeydown = function (e) {
+      if (e.keyCode == 27) {
+        self.resetPopup();
       }
     };
   },

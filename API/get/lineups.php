@@ -105,6 +105,14 @@ if ($stmt->rowCount() > 0) {
         $abilityResult = $conn->query($sql);
         $ability = $abilityResult->fetch(PDO::FETCH_ASSOC);
 
+        $agentId = $ability["AgentId"];
+
+        $sql = "SELECT * FROM Agents WHERE ID = $agentId;";
+        $agentResult = $conn->query($sql);
+        $agent = $agentResult->fetch(PDO::FETCH_ASSOC);
+
+        $ability["Agent"] = $agent;
+
         $lineup["Ability"] = $ability;
 
         array_push($arr, $lineup);

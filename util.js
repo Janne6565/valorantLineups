@@ -284,12 +284,15 @@ function getTimeStringFromTimestamp(timestamp) {
 
   if (difference >= secondsInDay) {
     const days = Math.floor(difference / secondsInDay);
+    if (days == 1) return `${days} Day ago`;
     return `${days} Days ago`;
   } else if (difference >= secondsInHour) {
     const hours = Math.floor(difference / secondsInHour);
+    if (hours == 1) return `${hours} Hour ago`;
     return `${hours} Hours ago`;
   } else if (difference >= secondsInMinute) {
     const minutes = Math.floor(difference / secondsInMinute);
+    if (minutes == 1) return `${minutes} Minute ago`;
     return `${minutes} Minutes ago`;
   } else {
     return "Just now";
@@ -324,23 +327,28 @@ function canvas_arrow(context, fromx, fromy, tox, toy, color, length) {
   var angle = Math.atan2(dy, dx);
   context.strokeStyle = color;
 
+  context.lineWidth = 6;
   context.beginPath();
   context.moveTo(fromx, fromy);
   context.lineTo(tox, toy);
+  context.stroke();
+
+  context.lineWidth = 8;
+  context.beginPath();
   context.lineTo(
-    tox - headlen * Math.cos(angle - Math.PI / 6),
-    toy - headlen * Math.sin(angle - Math.PI / 6)
+    tox - headlen * Math.cos(angle - Math.PI / 4),
+    toy - headlen * Math.sin(angle - Math.PI / 4)
   );
   context.moveTo(tox, toy);
   context.lineTo(
-    tox - headlen * Math.cos(angle + Math.PI / 6),
-    toy - headlen * Math.sin(angle + Math.PI / 6)
+    tox - headlen * Math.cos(angle + Math.PI / 4),
+    toy - headlen * Math.sin(angle + Math.PI / 4)
   );
   context.stroke();
 }
 
 /**
- * @description: Calculates the distance between a point and a line (all credits to https://stackoverflow.com/questions/849211/shortest-distance-between-a-point-and-a-line-segment)
+ * @description: Calculates the distance between a point and a line (all credits: https://stackoverflow.com/questions/849211/shortest-distance-between-a-point-and-a-line-segment)
  * @param {*} x - The x coordinate of the point
  * @param {*} y - The y coordinate of the point
  * @param {*} x1 - The x coordinate of the first point of the line
@@ -483,7 +491,8 @@ function createLineup(
     callback(status, response);
   };
   xml.send(formData);
-1}
+  1;
+}
 
 function deleteSpot(spotId, userId, authKey, recall) {
   let xml = new XMLHttpRequest();
@@ -497,6 +506,6 @@ function deleteSpot(spotId, userId, authKey, recall) {
   xml.open("GET", url);
   xml.onload = function () {
     recall(xml.responseText);
-  }
+  };
   xml.send();
 }

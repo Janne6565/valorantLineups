@@ -26,6 +26,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px 0px 10px 0px #020D14;
+    user-select: none;
 }
 
 
@@ -401,6 +402,7 @@ nav>div {
     height: auto;
     border-radius: 5%;
     box-shadow: 0 0 10px #101A25;
+    -webkit-user-drag: none;
 }
 
 .topSelection {
@@ -536,17 +538,10 @@ nav>div {
     height: calc(70vw * 9 / 16);
     background-size: cover;
     background-position: center;
-    text-align: right;
     z-index: 2;
+    display: flex;
 }
 
-.popup>.backgroundImage>canvas {
-    width: 20%;
-    height: auto;
-    position: relative;
-    top: 0;
-    right: 0;
-}
 
 .popup>i {
     position: absolute;
@@ -613,18 +608,18 @@ nav>div {
     font-family: 'Work Sans', sans-serif;
 }
 
-.top > .map-selection {
+.top>.map-selection {
     width: 40%;
 }
 
-.top > .map-selection > .selector {
+.top>.map-selection>.selector {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.top > .positionSelection {
+.top>.positionSelection {
     width: 60%;
 }
 
@@ -636,6 +631,49 @@ nav>div {
     border-radius: 5%;
 }
 
-.selector > label {
+.selector>label {
     font-weight: bold;
+}
+
+.backgroundImage {
+    display: flex;
+    margin: auto;
+    border-radius: 3vw;
+    transition: all ease .3s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.backgroundImage > div {
+    width: 50%;
+    padding: 2vh 2vw;
+}
+
+.backgroundImage > .left {
+    text-align: left;
+}
+
+.backgroundImage > .right {
+    text-align: right;
+}
+
+#canvasPositionStandOn {
+    width: 15vw;
+    height: calc(15vw * 9 / 16);
+    background-size: cover;
+    border-radius: 5%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    transition: all ease .3s;
+    cursor: pointer;
+}
+
+#canvasPositionLineup {
+    width: 50%;
+    height: auto;
+    position: relative;
+    object-fit: cover;
+}
+
+#canvasPositionStandOn:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+    transform: scale(1.05);
 }
