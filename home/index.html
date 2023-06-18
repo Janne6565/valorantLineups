@@ -17,8 +17,8 @@
             <div class="background" @click="resetPopup()">
 
             </div>
-            
-            <div class="backgroundImage" v-bind:style="{backgroundImage: 'url(' + selectedImage1 + ')'}">
+
+            <div class="   " v-bind:style="{backgroundImage: 'url(' + selectedImage1 + ')'}">
                 <div class="left">
                     <canvas id="canvasPositionStandOn" width="1920" height="1080"
                         v-bind:style="{backgroundImage: 'url(' + selectedImage2 + ')'}" @click="switchImages"></canvas>
@@ -76,6 +76,8 @@
                 </span>
             </div>
         </nav>
+
+
         <section class="mainContent">
             <section v-if="activePage == 'home'" class="home">
                 <div class="content">
@@ -182,25 +184,29 @@
                                     </select>
                                 </div>
 
-                                <div class="box__input">
-                                    <input class="box__file" type="file" name="file" id="file" />
-                                    <label for="file">
-                                        <strong>Image of the Angle you have to Look at</strong>
-                                        <span class="box__dragndrop">
-                                            Drop Image Here
-                                        </span>
-                                        .
-                                    </label>
-                                </div>
-                                <div class="box__input">
-                                    <input class="box__file" type="file" name="imagePosition" id="imagePosition" />
-                                    <label for="imagePosition">
-                                        <strong>Image of the Spot you have to Stand on</strong>
-                                        <span class="box__dragndrop">
-                                            Drop Image Here
-                                        </span>
-                                        .
-                                    </label>
+                                <div class="uploads">
+
+
+                                    <div class="box__input">
+                                        <input class="box__file" type="file" name="file" id="file" />
+                                        <label for="file">
+                                            <strong>Image of the Angle you have to Look at</strong>
+                                            <span class="box__dragndrop">
+                                                Drop Image Here
+                                            </span>
+                                            .
+                                        </label>
+                                    </div>
+                                    <div class="box__input">
+                                        <input class="box__file" type="file" name="imagePosition" id="imagePosition" />
+                                        <label for="imagePosition">
+                                            <strong>Image of the Spot you have to Stand on</strong>
+                                            <span class="box__dragndrop">
+                                                Drop Image Here
+                                            </span>
+                                            .
+                                        </label>
+                                    </div>
                                 </div>
                                 <button @click="submitLineup()">Submit Lineup</button>
                             </div>

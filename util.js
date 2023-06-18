@@ -76,7 +76,6 @@ function checkLogin(userId, token = String, callback = Function) {
   xml.onload = function () {
     let response = JSON.parse(xml.responseText);
     let status = response["code"];
-    console.log(response);
     callback(status, response["user"]);
   };
   xml.send();
@@ -262,7 +261,8 @@ function getLineups(tags, abilityId, map, limit, recall = Function) {
     let status = response["code"];
     if (status == 200) {
       let lineups = response["data"];
-      recall(status, lineups);
+      let maxCount = response["countAllLineups"];
+      recall(status, lineups, maxCount);
     } else {
       recall(status, null);
     }

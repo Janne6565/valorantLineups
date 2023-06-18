@@ -124,7 +124,6 @@ let vue = new Vue({
         userId,
         userAuth,
         (status, lineup) => {
-          console.log(status, lineup);
           if (status == 200) {
             self.updateLineups();
             self.updateCreatorCanvas();
@@ -145,15 +144,11 @@ let vue = new Vue({
       }
     },
     creatorCanvasButtonDown: function (e) {
-      console.log(e);
       let self = this;
       let canvas = document.getElementById("canvasLineupCreator");
       let rect = canvas.getBoundingClientRect();
       let x = ((self.clientX - rect.left) / (rect.right - rect.left)) * 1000;
       let y = ((self.clientY - rect.top) / (rect.bottom - rect.top)) * 1000;
-
-      console.log(x, y);
-      console.log(self.clientX, self.clientY)
 
       let spot = null;
 
@@ -174,7 +169,6 @@ let vue = new Vue({
 
         if (e.key == "Delete") {
           deleteSpot(spot, userId, userAuth, (status, data) => {
-            console.log(status, data);
             self.updateCreatorCanvas();
           });
         }
@@ -199,9 +193,7 @@ let vue = new Vue({
           userAuth,
           (status, spot) => {
             if (status == 200) {
-              console.log("Spot Initiated");
               setTimeout(() => {
-                console.log("Spot created");
                 self.updateCreatorCanvas();
               }, 400);
             }
@@ -260,7 +252,6 @@ let vue = new Vue({
       getSpotsOnMap(this.uploadInput.map, (status, spots) => {
         if (status == 200) {
           self.spots = spots;
-          console.log("Spots refreshed");
         } else {
           self.spots = [];
         }
@@ -432,12 +423,11 @@ let vue = new Vue({
     },
     loadDemoLineups: function () {
       const self = this;
-      getLineups(undefined, undefined, undefined, 10, (status, lineups) => {
+      getLineups(undefined, undefined, undefined, 10, (status, lineups, maxCount) => {
         if (status == 200) {
           self.lineups = [];
 
           for (const lineup of lineups) {
-            console.log(lineup);
             let lineupCorrect = {
               id: lineup["ID"],
               whenReleased: getTimeStringFromTimestamp(
@@ -456,6 +446,7 @@ let vue = new Vue({
             };
             self.lineups.push(lineupCorrect);
           }
+          self.amountLineupsLeft = maxCount - self.lineups.length;
         }
       });
     },
@@ -579,7 +570,6 @@ let vue = new Vue({
             ctx.fill();
           };
 
-          console.log(lineup);
           self.selectedImage2 = lineup.ImageStandOn;
           self.selectedImage1 = lineup.ImageLineup;
         }
@@ -591,7 +581,6 @@ let vue = new Vue({
       this.selectedImage2 = imageBackup;
     },
     refreshCanvas: function (recall = Function) {
-      console.log("refreshing canvas");
       let self = this;
       let image = new Image();
       let canvas = document.getElementById("canvasMapDisplay");

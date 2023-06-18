@@ -269,7 +269,7 @@ nav>div {
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
-    width: 70%;
+    width: 60%;
 }
 
 .home>.content>.left>.homeText {
@@ -318,6 +318,11 @@ nav>div {
 .list::-webkit-scrollbar-thumb {
     border-radius: 8px;
     background-color: #3b6a68;
+    transition: all ease .3s;
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+    background-color: #2a4e4c;
 }
 
 .latestLineups>.header {
@@ -529,8 +534,7 @@ nav>div {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    z-index: 100;
+    z-index: 100; /* haha lol bet nothings above 100 */
 }
 
 .popup>.backgroundImage {
@@ -550,7 +554,7 @@ nav>div {
     font-size: 35px;
     color: white;
     cursor: pointer;
-    padding: 20px 30px;
+    padding: 60px 90px;
     transform: scale(1);
     transition: all ease .3s;
     z-index: 3;
@@ -638,21 +642,21 @@ nav>div {
 .backgroundImage {
     display: flex;
     margin: auto;
-    border-radius: 3vw;
+    border-radius: 1vw;
     transition: all ease .3s;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
 }
 
-.backgroundImage > div {
+.backgroundImage>div {
     width: 50%;
     padding: 2vh 2vw;
 }
 
-.backgroundImage > .left {
+.backgroundImage>.left {
     text-align: left;
 }
 
-.backgroundImage > .right {
+.backgroundImage>.right {
     text-align: right;
 }
 
@@ -676,4 +680,47 @@ nav>div {
 #canvasPositionStandOn:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
     transform: scale(1.05);
+}
+
+@media only screen and (max-width: 1920px) {
+    .homeText {}
+
+    .homeText>h1 {
+        font-size: 30px;
+    }
+
+    .homeText>p {
+        font-size: 20px;
+    }
+
+    .latestLineups>.header>h2 {
+        font-size: 30px;
+    }
+
+    .list>.lineup {}
+
+    .list>.lineup>.left>.map {
+        font-size: 25px;
+    }
+
+    .list>.lineup>.left>.agent {
+        font-size: 20px;
+    }
+
+    .list>.lineup>.right>.abilityIcon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .rightSide>img {
+        width: 60%;
+    }
+
+    .latestLineups>.list {
+        width: 95%;
+    }
+
+    .home>.content>.left>.homeText {
+        gap: 15px;
+    }
 }

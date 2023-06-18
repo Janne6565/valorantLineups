@@ -139,7 +139,11 @@ if ($stmt->rowCount() > 0) {
         array_push($arr, $lineup);
     }
 
-    echo json_encode(array("code" => 200, "data" => $arr));
+    $sql = "SELECT COUNT(*) FROM Lineups";
+    $countResult = $conn->query($sql);
+    $count = $countResult->fetch(PDO::FETCH_ASSOC);
+
+    echo json_encode(array("code" => 200, "data" => $arr, "countAllLineups" => $count["COUNT(*)"]));
 } else {
     echo json_encode(array("code" => 404, "data" => "No lineups found"));
 }
