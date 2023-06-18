@@ -534,7 +534,8 @@ nav>div {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 100; /* haha lol bet nothings above 100 */
+    z-index: 100;
+    /* haha lol bet nothings above 100 */
 }
 
 .popup>.backgroundImage {
@@ -595,25 +596,32 @@ nav>div {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: left;
+    color: white;
 }
 
 .uploadForm>.top>.map-selection>h1 {
     font-size: 55px;
-    padding-left: 10vw;
     text-align: left;
+    color: white;
 }
 
 .uploadForm>.top {
+    margin-top: 0;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
     font-family: 'Work Sans', sans-serif;
+    color: white;
 }
 
 .top>.map-selection {
-    width: 40%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
 }
 
 .top>.map-selection>.selector {
@@ -621,10 +629,49 @@ nav>div {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    margin-bottom: 5vh;
+    width: 100%;
+}
+
+.top>.map-selection>.selector>select {
+    border-radius: 5px;
+    border: thin solid #0b2d42;
+
+    background-color: #041723;
+    
+    padding: 15px;
+    padding-right: 25px;
+    
+    font-size: 20px;
+    font-family: 'Work Sans', sans-serif;
+    color: white;
+
+    cursor: pointer;
+
+    width: 25%;
+    max-width: 25%;
 }
 
 .top>.positionSelection {
-    width: 60%;
+    width: 50%;
+}
+
+.map-selection>button {
+    width: 40%;
+    padding: 15px;
+
+    background-color: #041723;
+    border: none;
+    border-radius: 5px;
+    font-size: 25px;
+    font-family: 'Work Sans', sans-serif;
+    color: white;
+    cursor: pointer;
+    transition: all ease .3s;
+}
+
+.map-selection>button:hover {
+    background-color: #0b2d42;
 }
 
 .uploadForm>.top>.positionSelection>canvas {
@@ -638,6 +685,67 @@ nav>div {
 .selector>label {
     font-weight: bold;
 }
+
+.box__file {
+    display: none;
+}
+
+.uploads {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+}
+
+.uploads>label {
+    width: 80%;
+    height: 20vh;
+
+    background-color: #041723;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 20px;
+
+    margin: 20px 0;
+
+    cursor: pointer;
+    user-select: none;
+
+    border: dashed 2px #0b2d42;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+
+    transition: all ease .3s;
+}
+
+.uploads>label:hover {
+    background-color: #092333;
+}
+
+.uploads>label.valid {
+    background-color: #0b2d42;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.uploads>label::before {
+    content: "✔";
+    position: absolute;
+    font-size: 60px;
+    opacity: 0;
+    transition: all ease .3s;
+    color: rgba(255, 255, 255, 1);
+}
+
+.uploads>label.valid::before {
+    opacity: 1;
+}
+
 
 .backgroundImage {
     display: flex;

@@ -74,7 +74,7 @@ nav>.rightSide>a:hover {
     gap: 50px;
 }
 
-.header>.leftSide>.inputs > input {
+.header>.leftSide>.inputs>input {
     width: 40%;
     height: 50px;
     border-radius: 15px;
@@ -85,8 +85,8 @@ nav>.rightSide>a:hover {
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
-.header > .leftSide > .inputs {
-    display: flex; 
+.header>.leftSide>.inputs {
+    display: flex;
     flex-direction: column;
     gap: 20px;
     width: 100%;
@@ -94,7 +94,7 @@ nav>.rightSide>a:hover {
     align-items: center;
 }
 
-.header > .leftSide > .inputs > a {
+.header>.leftSide>.inputs>a {
     width: 43%;
     color: white;
     font-family: 'Work Sans', Courier, monospace;
@@ -102,7 +102,7 @@ nav>.rightSide>a:hover {
     text-decoration-thickness: 2px;
 }
 
-.header>.leftSide>.inputs > input:focus {
+.header>.leftSide>.inputs>input:focus {
     outline: none;
     border: thin solid rgb(57, 57, 57);
     background-color: rgb(57, 57, 57);
@@ -131,7 +131,7 @@ nav>.rightSide>a:hover {
     box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.75);
 }
 
-.header > .leftSide > a {
+.header>.leftSide>a {
     font-family: 'Work Sans', cursive;
     font-size: 1rem;
     margin: 0;
@@ -143,7 +143,7 @@ nav>.rightSide>a:hover {
 
 .error {
     font-family: 'Work Sans', cursive;
-    font-size: 20px; 
+    font-size: 20px;
     margin: 0;
     color: rgb(150, 150, 150);
     text-decoration: none;
@@ -210,4 +210,52 @@ nav>.rightSide>a:hover {
     background-color: rgb(57, 57, 57);
     border-color: rgb(57, 57, 57);
     color: rgb(161, 161, 161);
+}
+
+
+.errorPopup {
+    position: absolute;
+
+    top: 8%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+
+    padding: 1% 2%;
+    width: fit-content;
+    border-radius: 15px;
+
+    background-color: rgba(141, 16, 16, 1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 100;
+
+    color: white;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.5rem;
+
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+
+    animation: fadeOut 6s ease-in-out;
+    animation-fill-mode: forwards;
+
+    user-select: none;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }

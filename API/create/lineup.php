@@ -8,7 +8,7 @@ if (!checkAuthed()) {
     $params = getParams(array("abilityId", "userId", "spotIdFrom", "spotIdTo"));
 
     if (isset($_FILES['image']) && isset($_FILES['image']['tmp_name']) && isset($_FILES['imageStandOn']) && isset($_FILES['imageStandOn']['tmp_name'])) {
-        $allowedTypes = array('image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/webp');
+        $allowedTypes = array('image/jpeg', 'image/png', 'image/gif', 'image/jpg');
         $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
         $mime = finfo_file($fileInfo, $_FILES['image']['tmp_name']);
         finfo_close($fileInfo);
@@ -22,7 +22,6 @@ if (!checkAuthed()) {
             throwCode("Failed to upload image", 500, "Failed to upload image");
         }
 
-        $allowedTypes = array('image/jpeg', 'image/png', 'image/gif', 'image/jpg', 'image/webp');
         $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
         $infosImageStandOn = finfo_file($fileInfo, $_FILES['imageStandOn']['tmp_name']);
         finfo_close($fileInfo);

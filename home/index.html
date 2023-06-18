@@ -156,26 +156,19 @@
                     <div class="uploadForm">
                         <div class="top">
                             <div class="map-selection">
-                                <h1>Upload</h1>
+                                <h1>Create Lineup</h1>
                                 <div class="selector">
-                                    <label for="Map">Map: </label>
                                     <select v-model="uploadInput.map" name="Map" id="Map">
                                         <option value="null" disabled selected hidden>Select Map</option>
                                         <option v-for="map in maps" v-bind:value="map.ID"
                                             :selected="map.ID == 1 ? 'true' : 'false'">{{map.Name}}</option>
-                                    </select><br>
-                                </div>
+                                    </select>
 
-                                <div class="selector">
-                                    <label for="Agent">Agent: </label>
                                     <select v-model="uploadInput.agent" name="Agent" id="Agent">
                                         <option value="null" disabled selected hidden>Select Agent</option>
                                         <option v-for="agent in agents" v-bind:value="agent.ID">{{agent.Name}}</option>
                                     </select>
-                                </div>
 
-                                <div class="selector">
-                                    <label for="Ability">Ability: </label>
                                     <select v-model="uploadInput.ability" name="Ability" id="Ability">
                                         <option value="null" disabled selected hidden>Select Ability</option>
                                         <option v-for="ability in possibleAbilitys" v-bind:value="ability.ID">
@@ -185,28 +178,23 @@
                                 </div>
 
                                 <div class="uploads">
+                                    <input class="box__file" type="file" name="file" id="file" @change="fileUploaded"
+                                        accept="image/png, image/jpeg" />
+                                    <label for="file" id="labelLookAt">
+                                        <strong>Angle you have to look</strong>
+                                        <span class="box__dragndrop">
+                                            Upload Image Here
+                                        </span>
+                                    </label>
 
-
-                                    <div class="box__input">
-                                        <input class="box__file" type="file" name="file" id="file" />
-                                        <label for="file">
-                                            <strong>Image of the Angle you have to Look at</strong>
-                                            <span class="box__dragndrop">
-                                                Drop Image Here
-                                            </span>
-                                            .
-                                        </label>
-                                    </div>
-                                    <div class="box__input">
-                                        <input class="box__file" type="file" name="imagePosition" id="imagePosition" />
-                                        <label for="imagePosition">
-                                            <strong>Image of the Spot you have to Stand on</strong>
-                                            <span class="box__dragndrop">
-                                                Drop Image Here
-                                            </span>
-                                            .
-                                        </label>
-                                    </div>
+                                    <input class="box__file" type="file" name="imagePosition" id="imagePosition"
+                                        @change="fileUploaded" accept="image/png, image/jpeg" />
+                                    <label for="imagePosition" id="labelPosition">
+                                        <strong>Spot to Stand On</strong>
+                                        <span class="box__dragndrop">
+                                            Upload Image Here
+                                        </span>
+                                    </label>
                                 </div>
                                 <button @click="submitLineup()">Submit Lineup</button>
                             </div>
@@ -214,10 +202,20 @@
                                 <canvas id="canvasLineupCreator" width="1920" height="1920">
                                 </canvas>
                                 <p class="hint">
-                                    Press <b>Left Click</b> to select a Spot for you to stand to throw your Lineup
-                                    <br> Press <b>Right Click</b> to select a Spot for your Lineup to Land
-                                    <br> Press <b>Middle Click</b> to
-                                    create a Spot</p>
+                                    Press 
+                                    <b>Left Click</b>
+                                    to select the spot for you to Stand on
+
+                                    <br>
+                                    Press 
+                                    <b>Right Click</b>
+                                    to select the Spot for your Lineup to Land
+
+                                    <br>
+                                    Press
+                                    <b>Middle Click</b>
+                                    to create a Spot
+                                </p>
                             </div>
                         </div>
                     </div>

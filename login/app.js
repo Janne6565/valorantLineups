@@ -11,11 +11,15 @@ let vue = new Vue({
       password: "",
     },
     errorData: {
-        title: "",
-        message: "",
-        isError: false,
+      title: "",
+      message: "",
+      isError: false,
     },
     endpoint: "https://projektejwkk.de/valorantLineups/API/",
+    error: {
+      message: "",
+      isError: false,
+    },
   },
   methods: {
     triggerLogin: function () {
@@ -34,11 +38,11 @@ let vue = new Vue({
             redirect("../");
           }
         } else {
-            self.errorData = {
-                title: "Wrong credentials",
-                message: "The credentials you entered are wrong. Please try again.",
-                isError: true,
-            }
+          self.errorData = {
+            title: "Wrong credentials",
+            message: "The credentials you entered are wrong. Please try again.",
+            isError: true,
+          };
         }
       });
     },
@@ -51,6 +55,15 @@ let vue = new Vue({
         self.triggerLogin();
       }
     });
+
+    let urlParams = new URLSearchParams(window.location.search);
+    let myParam = urlParams.get("loginExpired");
+    if (myParam != null) {
+      this.error = {
+        message: "Your login has expired. Please login again.",
+        isError: true,
+      };
+    }
   },
 });
 

@@ -12,6 +12,9 @@
 
 <body>
     <section id="app">
+        <div class="errorPopup" v-if="error.isError">
+            {{error.message}}
+        </div>
         <nav>
             <span class="leftSide">
                 <a href="#">
@@ -20,10 +23,11 @@
             </span>
 
             <span class="rightSide">
-                <a v-for="header in navHeaders" :href="header.link">{{header.title}}</a>
+                <a v-for="header in navHeaders" :href="header.link">
+                    {{header.title}}
+                </a>
             </span>
         </nav>
-
 
         <section class="header">
             <section class="rightSide">

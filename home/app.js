@@ -67,7 +67,7 @@ let vue = new Vue({
   methods: {
     creatorCanvasMouseMove: function (e) {
       let self = this;
-      
+
       self.x = e.clientX;
       self.y = e.clientY;
     },
@@ -125,7 +125,6 @@ let vue = new Vue({
         userAuth,
         (status, lineup) => {
           if (status == 200) {
-            self.updateLineups();
             self.updateCreatorCanvas();
             self.refreshSelectors();
             alert("Lineup created");
@@ -423,32 +422,36 @@ let vue = new Vue({
     },
     loadDemoLineups: function () {
       const self = this;
-      getLineups(undefined, undefined, undefined, 10, (status, lineups, maxCount) => {
-        if (status == 200) {
-          self.lineups = [];
+      getLineups(
+        undefined,
+        undefined,
+        undefined,
+        10,
+        (status, lineups, maxCount) => {
+          if (status == 200) {
+            self.lineups = [];
 
-          for (const lineup of lineups) {
-            let lineupCorrect = {
-              id: lineup["ID"],
-              whenReleased: getTimeStringFromTimestamp(
-                lineup["DateCreated"]
-              ),
-              map: {
-                name: lineup["FromSpot"]["Name"],
-                image: lineup["FromSpot"]["SmallIImages"],
-              },
-              ability: {
-                icon: lineup["Ability"]["IconPath"],
-              },
-              agent: {
-                name: lineup["Ability"]["Agent"]["Name"],
-              }
-            };
-            self.lineups.push(lineupCorrect);
+            for (const lineup of lineups) {
+              let lineupCorrect = {
+                id: lineup["ID"],
+                whenReleased: getTimeStringFromTimestamp(lineup["DateCreated"]),
+                map: {
+                  name: lineup["FromSpot"]["Name"],
+                  image: lineup["FromSpot"]["SmallIImages"],
+                },
+                ability: {
+                  icon: lineup["Ability"]["IconPath"],
+                },
+                agent: {
+                  name: lineup["Ability"]["Agent"]["Name"],
+                },
+              };
+              self.lineups.push(lineupCorrect);
+            }
+            self.amountLineupsLeft = maxCount - self.lineups.length;
           }
-          self.amountLineupsLeft = maxCount - self.lineups.length;
         }
-      });
+      );
     },
     loadAbilitys: function (callback = Function) {
       const self = this;
@@ -717,7 +720,7 @@ let vue = new Vue({
     selectSpot: function (spot) {
       this.selection.spot = spot;
     },
-    testLogin() {
+    testLogin: function () {
       const self = this;
 
       const userAuth = getCookie("vtUserAuth");
@@ -739,6 +742,7 @@ let vue = new Vue({
               userIconLetter: "G",
             };
             self.isLoggedIn = false;
+            redirect("../login/?loginExpired=true");
           }
         });
       } else {
@@ -755,6 +759,27 @@ let vue = new Vue({
     resetPopup: function () {
       this.isLineupShown = false;
     },
+    fileUploaded: function() {
+      console.log("fileUploaded")
+
+      let fileLookAt = document.getElementById("file").files[0];
+      let labelLookAt = document.getElementById("labelLookAt");
+
+      if (fileLookAt != null) {
+        labelLookAt.classList.add("valid");
+      } else { 
+        labelLookAt.classList.remove("valid");
+      }
+      
+      let fileStandAt = document.getElementById("imagePosition").files[0];
+      let labelPosition = document.getElementById("labelPosition");
+
+      if (fileStandAt != null) {
+        labelPosition.classList.add("valid");
+      } else {
+        labelPosition.classList.remove("valid");
+      }
+    }
   },
   mounted: function () {},
   created: function () {
