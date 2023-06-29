@@ -169,9 +169,65 @@
             }]
         }
     }, {
+        "uuid": "cc8b64c8-4b25-4ff9-6e7f-37b4da43d235",
+        "displayName": "Deadlock",
+        "description": "Norwegian operative Deadlock deploys an array of cutting-edge nanowire to secure the battlefield from even the most lethal assault. No one escapes her vigilant watch, nor survives her unyielding ferocity.",
+        "developerName": "Cable",
+        "characterTags": null,
+        "displayIcon": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/displayicon.png",
+        "displayIconSmall": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/displayiconsmall.png",
+        "bustPortrait": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/fullportrait.png",
+        "fullPortrait": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/fullportrait.png",
+        "fullPortraitV2": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/fullportrait.png",
+        "killfeedPortrait": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/killfeedportrait.png",
+        "background": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/background.png",
+        "backgroundGradientColors": ["bcc2ffff", "4d64c4ff", "221c3dff", "22224bff"],
+        "assetPath": "ShooterGame/Content/Characters/Cable/Cable_PrimaryAsset",
+        "isFullPortraitRightFacing": false,
+        "isPlayableCharacter": true,
+        "isAvailableForTest": false,
+        "isBaseContent": false,
+        "role": {
+            "uuid": "5fc02f99-4091-4486-a531-98459a3e95e9",
+            "displayName": "Sentinel",
+            "description": "Sentinels are defensive experts who can lock down areas and watch flanks, both on attacker and defender rounds.",
+            "displayIcon": "https://media.valorant-api.com/agents/roles/5fc02f99-4091-4486-a531-98459a3e95e9/displayicon.png",
+            "assetPath": "ShooterGame/Content/Characters/_Core/Roles/Sentinel_PrimaryDataAsset"
+        },
+        "abilities": [{
+            "slot": "Ability1",
+            "displayName": "Sonic Sensor",
+            "description": "EQUIP a Sonic Sensor. FIRE to deploy. The sensor monitors an area for enemies making sound. It concusses that area if footsteps, weapons fire, or significant noise are detected.",
+            "displayIcon": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/abilities/ability1/displayicon.png"
+        }, {
+            "slot": "Ability2",
+            "displayName": "Barrier Mesh",
+            "description": "EQUIP a Barrier Mesh disc. FIRE to throw forward. Upon landing, the disc generates barriers from the origin point that block character movement.",
+            "displayIcon": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/abilities/ability2/displayicon.png"
+        }, {
+            "slot": "Grenade",
+            "displayName": "GravNet",
+            "description": "EQUIP a GravNet grenade. FIRE to throw. ALT FIRE to lob the grenade underhand. The GravNet detonates upon landing, forcing any enemies caught within to crouch and move slowly.",
+            "displayIcon": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/abilities/grenade/displayicon.png"
+        }, {
+            "slot": "Ultimate",
+            "displayName": "Annihilation",
+            "description": "EQUIP a Nanowire Accelerator. FIRE to unleash a pulse of nanowires that captures the first enemy contacted. The cocooned enemy is pulled along a nanowire path and will die if they reach the end, unless they are freed. The nanowire cocoon is destructible.",
+            "displayIcon": "https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/abilities/ultimate/displayicon.png"
+        }],
+        "voiceLine": {
+            "minDuration": 1.761667,
+            "maxDuration": 1.761667,
+            "mediaList": [{
+                "id": 727149664,
+                "wwise": "https://media.valorant-api.com/sounds/727149664.wem",
+                "wave": "https://media.valorant-api.com/sounds/727149664.wav"
+            }]
+        }
+    }, {
         "uuid": "f94c3b30-42be-e959-889c-5aa313dba261",
         "displayName": "Raze",
-        "description": "Raze explodes out of Brazil with her big personality and big guns. With her blunt-force-trauma playstyle, she excels at flushing entrenched enemies and clearing tight spaces with a generous dose of \"boom\".",
+        "description": "Raze explodes out of Brazil with her big personality and big guns. With her blunt-force-trauma playstyle, she excels at flushing entrenched enemies and clearing tight spaces with a generous dose of \"boom.\"",
         "developerName": "Clay",
         "characterTags": ["Area Damage Specialist"],
         "displayIcon": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/displayicon.png",
@@ -202,7 +258,7 @@
         }, {
             "slot": "Ability2",
             "displayName": "Paint Shells",
-            "description": "EQUIP a cluster grenade. FIRE to throw the grenade, which does damage and creates sub-munitions, each doing damage to anyone in their range. ALT FIRE to lob.",
+            "description": "EQUIP a cluster grenade. FIRE to throw the grenade, which does damage and creates sub-munitions, each doing damage to anyone in their range. ALT FIRE to lob. Paint Shells charge resets every two kills.",
             "displayIcon": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/abilities/ability2/displayicon.png"
         }, {
             "slot": "Grenade",
@@ -212,7 +268,7 @@
         }, {
             "slot": "Ultimate",
             "displayName": "Showstopper",
-            "description": "EQUIP a rocket launcher. FIRE shoots a rocket that does massive area damage on contact with anything.",
+            "description": "EQUIP a rocket launcher. FIRE to shoot a rocket that does massive area damage on contact with anything.",
             "displayIcon": "https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/abilities/ultimate/displayicon.png"
         }],
         "voiceLine": {
@@ -227,7 +283,7 @@
     }, {
         "uuid": "22697a3d-45bf-8dd7-4fec-84a9e28c69d7",
         "displayName": "Chamber",
-        "description": "Well dressed and well armed, French weapons designer Chamber expels aggressors with deadly precision. He leverages his custom arsenal to hold the line and pick off enemies from afar, with a contingency built for every plan.",
+        "description": "Well-dressed and well-armed, French weapons designer Chamber expels aggressors with deadly precision. He leverages his custom arsenal to hold the line and pick off enemies from afar, with a contingency built for every plan.",
         "developerName": "Deadeye",
         "characterTags": null,
         "displayIcon": "https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/displayicon.png",
@@ -253,12 +309,12 @@
         "abilities": [{
             "slot": "Ability2",
             "displayName": "Rendezvous",
-            "description": "PLACE a teleport anchor. While on the ground and in range of the anchor, REACTIVATE to quickly teleport to the anchor.  The anchor can be picked up to be REDEPLOYED.",
+            "description": "EQUIP a teleport anchor. FIRE to place it on the ground. While on the ground and in range of the anchor, REACTIVATE to quickly teleport to the anchor. The anchor can be picked up to be REDEPLOYED.",
             "displayIcon": "https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/abilities/ability2/displayicon.png"
         }, {
             "slot": "Grenade",
             "displayName": "Trademark",
-            "description": "PLACE a trap that scans for enemies. When a visible enemy comes in range, the trap counts down and then destabilizes the terrain around them, creating a lingering field that Slows players caught inside of it. The trap can be picked up to be REDEPLOYED.",
+            "description": "EQUIP a trap that scans for enemies. FIRE to place it on the ground. When a visible enemy comes in range, the trap counts down and then destabilizes the terrain around them, creating a lingering field that Slows players caught inside of it. The trap can be picked up to be REDEPLOYED.",
             "displayIcon": "https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/abilities/grenade/displayicon.png"
         }, {
             "slot": "Ability1",
@@ -268,7 +324,7 @@
         }, {
             "slot": "Ultimate",
             "displayName": "Tour De Force",
-            "description": "ACTIVATE to summon a powerful, custom sniper rifle that will kill an enemy with any direct hit to the upper body.  Killing an enemy creates a lingering field that Slows players caught inside of it.",
+            "description": "ACTIVATE to summon a powerful, custom sniper rifle that will kill an enemy with any direct hit to the upper body. ALT FIRE to aim down sights. Killing an enemy creates a lingering field that Slows players caught inside of it.",
             "displayIcon": "https://media.valorant-api.com/agents/22697a3d-45bf-8dd7-4fec-84a9e28c69d7/abilities/ultimate/displayicon.png"
         }],
         "voiceLine": {
@@ -283,7 +339,7 @@
     }, {
         "uuid": "601dbbe7-43ce-be57-2a40-4abd24953621",
         "displayName": "KAY/O",
-        "description": "KAY/O is a machine of war built for a single purpose: neutralizing radiants. His power to Suppress enemy abilities cripples his opponents' capacity to fight back, securing him and his allies the ultimate edge.",
+        "description": "KAY/O is a machine of war built for a single purpose: neutralizing radiants. His power to Suppress enemy abilities dismantles his opponents' capacity to fight back, securing him and his allies the ultimate edge.",
         "developerName": "Grenadier",
         "characterTags": null,
         "displayIcon": "https://media.valorant-api.com/agents/601dbbe7-43ce-be57-2a40-4abd24953621/displayicon.png",
@@ -314,17 +370,17 @@
         }, {
             "slot": "Ability1",
             "displayName": "FLASH/drive",
-            "description": "EQUIP a flash grenade. FIRE to overhand throw. ALT FIRE to underhand throw a weaker version that explodes quickly. The flash grenade explodes after a short fuse, Blinding anyone in line of sight.",
+            "description": "EQUIP a flash grenade. FIRE to overhand throw. ALT FIRE to lob a weaker version that explodes quickly. The flash grenade explodes after a short fuse, Blinding anyone in line of sight.",
             "displayIcon": "https://media.valorant-api.com/agents/601dbbe7-43ce-be57-2a40-4abd24953621/abilities/ability1/displayicon.png"
         }, {
             "slot": "Ability2",
             "displayName": "ZERO/point",
-            "description": "EQUIP a suppression blade. FIRE to throw. The blade sticks to the first surface it hits, winds up, and suppresses anyone in the radius of the explosion.",
+            "description": "EQUIP a suppression blade. FIRE to throw. The blade sticks to the first surface it hits, winds up, and Suppresses anyone in the radius of the explosion. Enemies can destroy this blade.",
             "displayIcon": "https://media.valorant-api.com/agents/601dbbe7-43ce-be57-2a40-4abd24953621/abilities/ability2/displayicon.png"
         }, {
             "slot": "Ultimate",
             "displayName": "NULL/cmd",
-            "description": "INSTANTLY overload with polarized radianite energy that pulses from KAY/O in a massive radius. Enemies hit with pulses are suppressed for a short duration. While overloaded, KAY/O gains Combat Stim and can be re-stabilized if downed.",
+            "description": "INSTANTLY overload with polarized radianite energy that pulses from KAY/O in a massive radius. Enemies hit with pulses are Suppressed for a short duration. While overloaded, KAY/O gains Combat Stim and can be re-stabilized if downed.",
             "displayIcon": "https://media.valorant-api.com/agents/601dbbe7-43ce-be57-2a40-4abd24953621/abilities/ultimate/displayicon.png"
         }],
         "voiceLine": {
@@ -380,7 +436,7 @@
         }, {
             "slot": "Ultimate",
             "displayName": "Seekers",
-            "description": "EQUIP a Seeker trinket.  FIRE to send out three Seekers to track down the three closest enemies.  If a Seeker reaches its target, it Nearsights them.",
+            "description": "EQUIP a Seeker trinket.  FIRE to send out three Seekers to track down the three closest enemies.  If a Seeker reaches its target, it Nearsights them. Enemies can destroy the Seekers.",
             "displayIcon": "https://media.valorant-api.com/agents/6f2a04ca-43e0-be17-7f36-b3908627744d/abilities/ultimate/displayicon.png"
         }],
         "voiceLine": {
@@ -426,7 +482,7 @@
         }, {
             "slot": "Ability2",
             "displayName": "Spycam",
-            "description": "EQUIP a spycam. FIRE to place the spycam at the targeted location. RE-USE this ability to take control of the camera's view. While in control of the camera, FIRE to shoot a marking dart. This dart will Reveal the location of any player struck by the dart.",
+            "description": "EQUIP a spycam. FIRE to place the spycam at the targeted location. RE-USE this ability to take control of the camera's view. While in control of the camera, FIRE to shoot a marking dart. This dart will Reveal the location of any player struck by the dart. This ability can be picked up to be REDEPLOYED.",
             "displayIcon": "https://media.valorant-api.com/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/abilities/ability2/displayicon.png"
         }, {
             "slot": "Grenade",
@@ -446,6 +502,67 @@
                 "id": 246514732,
                 "wwise": "https://media.valorant-api.com/sounds/246514732.wem",
                 "wave": "https://media.valorant-api.com/sounds/246514732.wav"
+            }]
+        }
+    }, {
+        "uuid": "ded3520f-4264-bfed-162d-b080e2abccf9",
+        "displayName": "Sova",
+        "description": "Born from the eternal winter of Russia's tundra, Sova tracks, finds, and eliminates enemies with ruthless efficiency and precision. His custom bow and incredible scouting abilities ensure that even if you run, you cannot hide. ",
+        "developerName": "Hunter_NPE",
+        "characterTags": ["Detection", "Area Damage"],
+        "displayIcon": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/displayicon.png",
+        "displayIconSmall": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/displayiconsmall.png",
+        "bustPortrait": null,
+        "fullPortrait": null,
+        "fullPortraitV2": null,
+        "killfeedPortrait": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/killfeedportrait.png",
+        "background": null,
+        "backgroundGradientColors": ["f7c7a5ff", "392931ff", "101c47ff", "082652ff"],
+        "assetPath": "ShooterGame/Content/Characters/Hunter/Hunter_NPE_PrimaryAsset",
+        "isFullPortraitRightFacing": false,
+        "isPlayableCharacter": false,
+        "isAvailableForTest": false,
+        "isBaseContent": false,
+        "role": {
+            "uuid": "1b47567f-8f7b-444b-aae3-b0c634622d10",
+            "displayName": "Initiator",
+            "description": "Initiators challenge angles by setting up their team to enter contested ground and push defenders away.",
+            "displayIcon": "https://media.valorant-api.com/agents/roles/1b47567f-8f7b-444b-aae3-b0c634622d10/displayicon.png",
+            "assetPath": "ShooterGame/Content/Characters/_Core/Roles/Breaker_PrimaryDataAsset"
+        },
+        "abilities": [{
+            "slot": "Ability1",
+            "displayName": "Shock Bolt",
+            "description": "EQUIP a bow with a shock bolt. FIRE to send the explosive bolt forward, detonating upon collision and damaging players nearby. HOLD FIRE to extend the range of the projectile. ALT FIRE to add up to two bounces to this arrow.",
+            "displayIcon": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/abilities/ability1/displayicon.png"
+        }, {
+            "slot": "Ability2",
+            "displayName": "Recon Bolt",
+            "description": "EQUIP a bow with recon bolt. FIRE to send the recon bolt forward, activating upon collision and Revealing the location of nearby enemies caught in the line of sight of the bolt. Enemies can destroy this bolt. HOLD FIRE to extend the range of the projectile. ALT FIRE to add up to two bounces to this arrow. ",
+            "displayIcon": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/abilities/ability2/displayicon.png"
+        }, {
+            "slot": "Grenade",
+            "displayName": "Owl Drone",
+            "description": "EQUIP an owl drone. FIRE to deploy and take control of movement of the drone. While in control of the drone, FIRE to shoot a marking dart. This dart will Reveal the location of any player struck by the dart. Enemies can destroy the Owl Drone.",
+            "displayIcon": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/abilities/grenade/displayicon.png"
+        }, {
+            "slot": "Ultimate",
+            "displayName": "Hunter's Fury",
+            "description": "EQUIP a bow with three long-range, wall-piercing energy blasts. FIRE to release an energy blast in a line in front of Sova, dealing damage and Revealing the location of enemies caught in the line. This ability can be RE-USED up to two more times while the ability timer is active.",
+            "displayIcon": "https://media.valorant-api.com/agents/ded3520f-4264-bfed-162d-b080e2abccf9/abilities/ultimate/displayicon.png"
+        }, {
+            "slot": "Passive",
+            "displayName": "Uncanny Marksman",
+            "description": "Sova's custom bow can fire his arrows and bounce them off terrain. Holding fire charges the bow's power, and the bolt is loosed when released. Press alt fire to change the number of bounces.Your arrows can bounce off terrain. Holding left click increases the bow's range trajectory. Right clicking Toggle through the desired number of terrain bounces by right clicking. The arrow is loosed when left click is released.",
+            "displayIcon": null
+        }],
+        "voiceLine": {
+            "minDuration": 2.021729,
+            "maxDuration": 2.021729,
+            "mediaList": [{
+                "id": 130865070,
+                "wwise": "https://media.valorant-api.com/sounds/130865070.wem",
+                "wave": "https://media.valorant-api.com/sounds/130865070.wav"
             }]
         }
     }, {
@@ -477,17 +594,17 @@
         "abilities": [{
             "slot": "Ability1",
             "displayName": "Shock Bolt",
-            "description": "EQUIP a bow with a shock bolt. FIRE to send the explosive bolt forward, detonating upon collision and damaging players nearby. HOLD FIRE to extend the range of the projectile. ALTERNATE FIRE to add up to two bounces to this arrow.",
+            "description": "EQUIP a bow with a shock bolt. FIRE to send the explosive bolt forward, detonating upon collision and damaging players nearby. HOLD FIRE to extend the range of the projectile. ALT FIRE to add up to two bounces to this arrow.",
             "displayIcon": "https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/abilities/ability1/displayicon.png"
         }, {
             "slot": "Ability2",
             "displayName": "Recon Bolt",
-            "description": "EQUIP a bow with recon bolt. FIRE to send the recon bolt forward, activating upon collision and Revealing the location of nearby enemies caught in the line of sight of the bolt. Enemies can destroy this bolt. HOLD FIRE to extend the range of the projectile. ALTERNATE FIRE to add up to two bounces to this arrow. ",
+            "description": "EQUIP a bow with recon bolt. FIRE to send the recon bolt forward, activating upon collision and Revealing the location of nearby enemies caught in the line of sight of the bolt. Enemies can destroy this bolt. HOLD FIRE to extend the range of the projectile. ALT FIRE to add up to two bounces to this arrow. ",
             "displayIcon": "https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/abilities/ability2/displayicon.png"
         }, {
             "slot": "Grenade",
             "displayName": "Owl Drone",
-            "description": "EQUIP an owl drone. FIRE to deploy and take control of movement of the drone. While in control of the drone, FIRE to shoot a marking dart. This dart will Reveal the location of any player struck by the dart.",
+            "description": "EQUIP an owl drone. FIRE to deploy and take control of movement of the drone. While in control of the drone, FIRE to shoot a marking dart. This dart will Reveal the location of any player struck by the dart. Enemies can destroy the Owl Drone.",
             "displayIcon": "https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/abilities/grenade/displayicon.png"
         }, {
             "slot": "Ultimate",
@@ -512,7 +629,7 @@
     }, {
         "uuid": "1e58de9c-4950-5125-93e9-a0aee9f98746",
         "displayName": "Killjoy",
-        "description": "The genius of Germany, Killjoy secures and defends key battlefield positions with a collection of traps, turrets, and mines. Each invention is primed to punish any assailant too dumb to back down.",
+        "description": "The genius of Germany, Killjoy effortlessly secures key battlefield positions with her arsenal of inventions. If their damage doesn't take her enemies out, the debuff her robots provide will make short work of them.",
         "developerName": "Killjoy",
         "characterTags": ["Defensive Lockdown", "Area Damage"],
         "displayIcon": "https://media.valorant-api.com/agents/1e58de9c-4950-5125-93e9-a0aee9f98746/displayicon.png",
@@ -568,7 +685,7 @@
     }, {
         "uuid": "95b78ed7-4637-86d9-7e41-71ba8c293152",
         "displayName": "Harbor",
-        "description": "Hailing from India’s coast, Harbor storms the field wielding ancient technology with dominion over water. He unleashes frothing rapids and crushing waves to shield his allies and to pummel those that oppose him.",
+        "description": "Hailing from India’s coast, Harbor storms the field wielding ancient technology with dominion over water. He unleashes frothing rapids and crushing waves to shield his allies, or pummel those that oppose him.",
         "developerName": "Mage",
         "characterTags": null,
         "displayIcon": "https://media.valorant-api.com/agents/95b78ed7-4637-86d9-7e41-71ba8c293152/displayicon.png",
@@ -624,7 +741,7 @@
     }, {
         "uuid": "707eab51-4836-f488-046a-cda6bf494859",
         "displayName": "Viper",
-        "description": "The American Chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and cripple the enemy's vision. If the toxins don't kill her prey, her mindgames surely will.",
+        "description": "The American Chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and choke the enemy's vision. If the toxins don't kill her prey, her mindgames surely will.",
         "developerName": "Pandemic",
         "characterTags": ["Vision Control Specialist"],
         "displayIcon": "https://media.valorant-api.com/agents/707eab51-4836-f488-046a-cda6bf494859/displayicon.png",
@@ -777,7 +894,7 @@
         }, {
             "slot": "Ability2",
             "displayName": "Nebula  / Dissipate",
-            "description": "Place Stars in Astral Form (Ultimate Key). \r\n\r\nACTIVATE a Star to transform it into a Nebula (smoke).\r\n\r\nUSE a Star to Dissipate it, returning the star to be placed in a new location after a delay.\r\n\r\nDissipate briefly forms a fake Nebula at the Star's location before returning.",
+            "description": "Place Stars in Astral Form (Ultimate Key). \r\n\r\nACTIVATE a Star to transform it into a Nebula (smoke).\r\n\r\nUSE a Star to Dissipate it, returning the Star to be placed in a new location after a delay.\r\n\r\nDissipate briefly forms a fake Nebula at the Star's location before returning.",
             "displayIcon": "https://media.valorant-api.com/agents/41fb69c1-4189-7b37-f117-bcaf1e96f1bf/abilities/ability2/displayicon.png"
         }, {
             "slot": "Grenade",
@@ -787,7 +904,7 @@
         }, {
             "slot": "Ultimate",
             "displayName": "Astral Form / Cosmic Divide",
-            "description": "ACTIVATE to enter Astral Form where you can place Stars with PRIMARY FIRE. Stars can be reactivated later, transforming them into a Nova Pulse, Nebula, or Gravity Well.\r\n\r\nWhen Cosmic Divide is charged, use SECONDARY FIRE in Astral Form to begin aiming it, then PRIMARY FIRE to select two locations. An infinite Cosmic Divide connects the two points you select. Cosmic Divide blocks bullets and heavily dampens audio.",
+            "description": "ACTIVATE to enter Astral Form where you can place Stars with FIRE. Stars can be reactivated later, transforming them into a Nova Pulse, Nebula, or Gravity Well.\r\n\r\nWhen Cosmic Divide is charged, use ALT FIRE in Astral Form to begin aiming it, then FIRE to select two locations. An infinite Cosmic Divide connects the two points you select. Cosmic Divide blocks bullets and heavily dampens audio.",
             "displayIcon": "https://media.valorant-api.com/agents/41fb69c1-4189-7b37-f117-bcaf1e96f1bf/abilities/ultimate/displayicon.png"
         }, {
             "slot": "Passive",
@@ -807,7 +924,7 @@
     }, {
         "uuid": "9f0d8ba9-4140-b941-57d3-a7ad57c6b417",
         "displayName": "Brimstone",
-        "description": "Joining from the USA, Brimstone's orbital arsenal ensures his squad always has the advantage. His ability to deliver utility precisely and safely make him the unmatched boots-on-the-ground commander.  ",
+        "description": "Joining from the U.S.A., Brimstone's orbital arsenal ensures his squad always has the advantage. His ability to deliver utility precisely and safely make him the unmatched boots-on-the-ground commander.",
         "developerName": "Sarge",
         "characterTags": ["Vision Control", "Area Damage"],
         "displayIcon": "https://media.valorant-api.com/agents/9f0d8ba9-4140-b941-57d3-a7ad57c6b417/displayicon.png",
@@ -843,7 +960,7 @@
         }, {
             "slot": "Ability2",
             "displayName": "Sky Smoke",
-            "description": "EQUIP a tactical map. FIRE to set locations where Brimstone's smoke clouds will land. ALTERNATE FIRE to confirm, launching long-lasting smoke clouds that block vision in the selected area.",
+            "description": "EQUIP a tactical map. FIRE to set locations where Brimstone's smoke clouds will land. ALT FIRE to confirm, launching long-lasting smoke clouds that block vision in the selected area.",
             "displayIcon": "https://media.valorant-api.com/agents/9f0d8ba9-4140-b941-57d3-a7ad57c6b417/abilities/ability2/displayicon.png"
         }, {
             "slot": "Ultimate",
@@ -950,17 +1067,17 @@
         }, {
             "slot": "Ability1",
             "displayName": "BLINDSIDE",
-            "description": "EQUIP to rip an unstable dimensional fragment from reality. FIRE to throw the fragment, activating a flash that winds up once it collides with a hard surface in world.",
+            "description": "EQUIP to rip an unstable dimensional fragment from reality. FIRE to throw the fragment, activating a flash that winds up once it collides with a hard surface.",
             "displayIcon": "https://media.valorant-api.com/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89/abilities/ability1/displayicon.png"
         }, {
             "slot": "Ability2",
             "displayName": "GATECRASH",
-            "description": "EQUIP a rift tether FIRE to send the tether forward ALT FIRE to place a stationary tether ACTIVATE to teleport to the tether's location USE to trigger a fake teleport.",
+            "description": "EQUIP a rift tether FIRE to send the tether forward. ALT FIRE to place a stationary tether. ACTIVATE to teleport to the tether's location. USE to trigger a fake teleport.",
             "displayIcon": "https://media.valorant-api.com/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89/abilities/ability2/displayicon.png"
         }, {
             "slot": "Ultimate",
             "displayName": "DIMENSIONAL DRIFT",
-            "description": "EQUIP a mask that can see between dimensions. FIRE to drift into Yoru's dimension, unable to be affected or seen by enemies from the outside.",
+            "description": "EQUIP a mask that can see between dimensions. FIRE to drift into Yoru's dimension, unable to be affected or seen by enemies from the outside. REACTIVATE to exit Yoru's dimension early.",
             "displayIcon": "https://media.valorant-api.com/agents/7f94d92c-4234-0a36-9646-3a87eb8b5c89/abilities/ultimate/displayicon.png"
         }],
         "voiceLine": {
@@ -1118,7 +1235,7 @@
         }, {
             "slot": "Ability2",
             "displayName": "Dark Cover",
-            "description": "EQUIP a shadow orb, entering a phased world to place and target the orbs. PRESS the ability key to throw the shadow orb to the marked location, creating a long-lasting shadow sphere that blocks vision. HOLD FIRE while targeting to move the marker further away. HOLD SECONDARY FIRE while targeting to move the marker closer. PRESS RELOAD to toggle normal targeting view.",
+            "description": "EQUIP a shadow orb, entering a phased world to place and target the orbs. PRESS the ability key to throw the shadow orb to the marked location, creating a long-lasting shadow sphere that blocks vision. HOLD FIRE while targeting to move the marker further away. HOLD ALT FIRE while targeting to move the marker closer. PRESS RELOAD to toggle normal targeting view.",
             "displayIcon": "https://media.valorant-api.com/agents/8e253930-4c05-31dd-1b6c-968525494517/abilities/ability2/displayicon.png"
         }, {
             "slot": "Grenade",
@@ -1174,7 +1291,7 @@
         }, {
             "slot": "Ability2",
             "displayName": "Tailwind",
-            "description": "ACTIVATE to prepare a gust of wind for a limited time. RE-USE the wind to propel Jett in the direction she is moving. If Jett is standing still, she propels forward.",
+            "description": "ACTIVATE to prepare a gust of wind for a limited time. RE-USE the wind to propel Jett in the direction she is moving. If Jett is standing still, she propels forward. Tailwind charge resets every two kills.",
             "displayIcon": "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/ability2/displayicon.png"
         }, {
             "slot": "Grenade",
@@ -1184,7 +1301,7 @@
         }, {
             "slot": "Ultimate",
             "displayName": "Blade Storm",
-            "description": "EQUIP a set of highly accurate throwing knives. FIRE to throw a single knife and recharge knives on a kill. ALTERNATE FIRE to throw all remaining daggers but does not recharge on a kill.",
+            "description": "EQUIP a set of highly accurate throwing knives. FIRE to throw a single knife and recharge knives on a kill. ALT FIRE to throw all remaining daggers but does not recharge on a kill.",
             "displayIcon": "https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/abilities/ultimate/displayicon.png"
         }, {
             "slot": "Passive",

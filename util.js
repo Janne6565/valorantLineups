@@ -1,5 +1,136 @@
 const API_URL = "https://projektejwkk.de/valorantLineups/API/";
 
+function markXOnPoint(ctx, x, y, color) {
+  ctx.beginPath();
+  ctx.moveTo(x - 5, y - 5);
+  ctx.lineTo(x + 5, y + 5);
+  ctx.strokeStyle = color;
+  ctx.stroke();
+  ctx.closePath();
+
+  ctx.beginPath();
+  ctx.moveTo(x + 5, y - 5);
+  ctx.lineTo(x - 5, y + 5);
+  ctx.strokeStyle = color;
+  ctx.stroke();
+  ctx.closePath();
+}
+
+function drawLine(ctx, x1, y1, x2, y2, color) {
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.strokeStyle = color;
+  ctx.stroke();
+  ctx.closePath();
+}
+
+function drawDottedLine(ctx, x1, y1, x2, y2, color) {
+  ctx.beginPath();
+  ctx.setLineDash([5, 5]);
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.strokeStyle = color;
+  ctx.stroke();
+  ctx.closePath();
+  ctx.setLineDash([]);
+}
+
+function drawCircle(ctx, x, y, radius, color) {
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, 2 * Math.PI);
+  ctx.strokeStyle = color;
+  ctx.stroke();
+  ctx.closePath();
+}
+
+function fillCircle(ctx, x, y, radius, color) {
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, 2 * Math.PI);
+  ctx.fillStyle = color;
+  ctx.fill();
+  ctx.closePath();
+}
+
+const abilityDrawfunctions = {
+  granade: function (ctx, posStartX, posStartY, posEndX, posEndY, color) {
+    markXOnPoint(ctx, posStartX, posStartY, color);
+
+    drawDottedLine(ctx, posStartX, posStartY, posEndX, posEndY, color);
+
+    drawCircle(ctx, posEndX, posEndX, 15, color);
+  },
+  smoke: function (ctx, posStartX, posStartY, posEndX, posEndY, color) {
+    markXOnPoint(ctx, posStartX, posStartY, color);
+
+    drawDottedLine(ctx, posStartX, posStartY, posEndX, posEndY, color);
+
+    drawCircle(ctx, posEndX, posEndY, 15, color);
+  },
+  wall: function (ctx, posStartX, posStartY, posEndX, posEndY, color) {
+    markXOnPoint(ctx, posStartX, posStartY, color);
+
+    drawLine(ctx, posStartX, posStartY, posEndX, posEndY, color);
+
+    markXOnPoint(ctx, posEndX, posEndY, color);
+  },
+  flash: function (ctx, posStartX, posStartY, posEndX, posEndY, color) {
+    markXOnPoint(ctx, posStartX, posStartY, color);
+
+    drawDottedLine(ctx, posStartX, posStartY, posEndX, posEndY, color);
+
+    fillCircle(ctx, posEndX, posEndX, 5, color);
+  },
+  molly: function (ctx, posStartX, posStartY, posEndX, posEndY, color) {
+    markXOnPoint(ctx, posStartX, posStartY, color);
+
+    drawDottedLine(ctx, posStartX, posStartY, posEndX, posEndY, color);
+
+    drawCircle(ctx, posEndX, posEndY, 15, color);
+  },
+  scandart: function (ctx, posStartX, posStartY, posEndX, posEndY, color) {
+    markXOnPoint(ctx, posStartX, posStartY, color);
+
+    drawDottedLine(ctx, posStartX, posStartY, posEndX, posEndY, color);
+
+    fillCircle(ctx, posEndX, posEndY, 5, color);
+    drawCircle(ctx, posEndX, posEndY, 150, color);
+  },
+  shockdart: function (ctx, posStartX, posStartY, posEndX, posEndY, color) {
+    drawDottedLine(ctx, posStartX, posStartY, posEndX, posEndY, color);
+
+    drawCircle(ctx, posEndX, posEndY, 15, color);
+  },
+  chamberutil: function (ctx, posStartX, posStartY, posEndX, posEndY, color) {
+    markXOnPoint(ctx, posStartX, posStartY, color);
+
+    drawDottedLine(ctx, posStartX, posStartY, posEndX, posEndY, color);
+
+    fillCircle(ctx, posEndX, posEndY, 5, color);
+
+    drawCircle(ctx, posEndX, posEndY, 15, color);
+  },
+  kayoknife: function (ctx, posStartX, posStartY, posEndX, posEndY, color) {
+    markXOnPoint(ctx, posStartX, posStartY, color);
+
+    drawDottedLine(ctx, posStartX, posStartY, posEndX, posEndY, color);
+
+    fillCircle(ctx, posEndX, posEndY, 5, color);
+
+    drawCircle(ctx, posEndX, posEndY, 20, color);
+  },
+  trapicon: function (ctx, posStartX, posStartY, posEndX, posEndY, color) {
+    drawCircle(ctx, posStartX, posStartY, 8, color);
+
+    fillCircle(ctx, posStartX, posStartY, 4, color);
+  },
+  orbitalstrike: function (ctx, posStartX, posStartY, posEndX, posEndY, color) {
+    fillCircle(ctx, posStartX, posStartY, 2, color);
+
+    drawCircle(ctx, posStartX, posStartY, 15, color);
+  },
+};
+
 /**
  * @description: Redirects the user to the given url
  * @param {String} url - The url to redirect to
@@ -336,15 +467,19 @@ function canvas_arrow(context, fromx, fromy, tox, toy, color, length) {
 
   context.lineWidth = 8;
   context.beginPath();
-  context.lineTo(
-    tox - headlen * Math.cos(angle - Math.PI / 4),
-    toy - headlen * Math.sin(angle - Math.PI / 4)
-  );
+
   context.moveTo(tox, toy);
   context.lineTo(
-    tox - headlen * Math.cos(angle + Math.PI / 4),
-    toy - headlen * Math.sin(angle + Math.PI / 4)
+    tox - headlen * Math.cos(angle - Math.PI / 6),
+    toy - headlen * Math.sin(angle - Math.PI / 6)
   );
+
+  context.moveTo(tox, toy);
+  context.lineTo(
+    tox - headlen * Math.cos(angle + Math.PI / 6),
+    toy - headlen * Math.sin(angle + Math.PI / 6)
+  );
+
   context.stroke();
 }
 
@@ -461,6 +596,7 @@ function createSpot(x, y, mapId, userId, userAuth, callback) {
 function createLineup(
   image,
   imageStandOn,
+  imageLandOn,
   agentId,
   abilityId,
   from,
@@ -474,6 +610,7 @@ function createLineup(
   var formData = new FormData();
   formData.append("image", image);
   formData.append("imageStandOn", imageStandOn);
+  formData.append("imageLandOn", imageLandOn);
 
   const url = echoParams(API_URL + "create/lineup.php", {
     agentId: agentId,
@@ -500,6 +637,21 @@ function deleteSpot(spotId, userId, authKey, recall) {
 
   const url = echoParams(API_URL + "delete/spot.php", {
     spotId: spotId,
+    userId: userId,
+    authKey: authKey,
+  });
+
+  xml.open("GET", url);
+  xml.onload = function () {
+    recall(xml.responseText);
+  };
+  xml.send();
+}
+
+function getUserLineups(userId, authKey, recall) {
+  let xml = new XMLHttpRequest();
+
+  const url = echoParams(API_URL + "get/userLineups.php", {
     userId: userId,
     authKey: authKey,
   });

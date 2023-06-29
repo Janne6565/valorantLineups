@@ -67,7 +67,11 @@ def getAgents():
                 break
             index += 1
 
-        string += "INSERT INTO Agents (Name, RoleId, DisplayIconPath, BustPortraitPath) VALUES ('{}', {}, '{}', '{}');\n".format(displayName, role, displayIcon, bustPortaitPath)
+
+        if (displayName == "Deadlock"):
+            string += "INSERT INTO Agents (Name, RoleId, DisplayIconPath, BustPortraitPath) VALUES ('{}', {}, '{}', '{}');\n".format(displayName, role, displayIcon, bustPortaitPath)
+
+    print(string)
 
     string = ""
     for role in roles: 
@@ -85,7 +89,7 @@ def getAgents():
         "Ultimate": "X"
     }
     for agent in agents["data"]:
-        abilitys = agent["abilities"]        
+        abilitys = agent["abilities"]    
 
         for ability in abilitys:
             if ability["slot"] == "Passive":
@@ -95,7 +99,9 @@ def getAgents():
             displayName = ability["displayName"].replace("'", "")
             description = ability["description"].replace("'", "")
             displayIcon = ability["displayIcon"]
-            string += "INSERT INTO Abilitys (AgentId, Slot, Name, IconPath, Description) VALUES ({}, '{}', '{}', '{}', '{}');\n".format(index, slot, displayName, displayIcon, description)
+            
+            if (agent["displayName"] == "Deadlock"):
+                string += "INSERT INTO Abilitys (AgentId, Slot, Name, IconPath, Description) VALUES ({}, '{}', '{}', '{}', '{}');\n".format(index, slot, displayName, displayIcon, description)
         index += 1
 
     print(string)

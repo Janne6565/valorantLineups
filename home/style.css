@@ -490,6 +490,14 @@ nav>div {
     background-color: #02090D;
 }
 
+.bot > .headingBot {
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Work Sans', sans-serif;
+    margin: 0;
+    color: #7FD5D1;
+}
+
 .mapSection {
     display: flex;
     flex-direction: column;
@@ -674,6 +682,13 @@ nav>div {
     background-color: #0b2d42;
 }
 
+.map-selection>button:disabled {
+    background-color: #0f3e5a;
+    cursor: not-allowed;
+
+    color: rgba(3, 20, 31, 0.5);
+}
+
 .uploadForm>.top>.positionSelection>canvas {
     height: 50vh;
     width: auto;
@@ -700,7 +715,7 @@ nav>div {
 
 .uploads>label {
     width: 80%;
-    height: 20vh;
+    height: 13vh;
 
     background-color: #041723;
 
@@ -753,22 +768,38 @@ nav>div {
     border-radius: 1vw;
     transition: all ease .3s;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    flex-direction: column;
 }
 
 .backgroundImage>div {
-    width: 50%;
+    width: calc(100% - 4vw);
+    height: calc(50% - 4vh);
     padding: 2vh 2vw;
+    display: flex; 
+    flex-direction: row;
 }
 
-.backgroundImage>.left {
+.backgroundImage>div:nth-child(1) {
+    margin-top: 0;
+    align-items: flex-start;
+}
+
+.backgroundImage>div:nth-child(2) {
+    align-items: flex-end;
+}
+
+.backgroundImage>div>.left {
     text-align: left;
+    width: 50%;
 }
 
-.backgroundImage>.right {
+.backgroundImage>div>.right {
     text-align: right;
+    width: 50%;
 }
 
-#canvasPositionStandOn {
+#canvasPositionStandOn,
+#canvasLineupLanded {
     width: 15vw;
     height: calc(15vw * 9 / 16);
     background-size: cover;
@@ -785,7 +816,8 @@ nav>div {
     object-fit: cover;
 }
 
-#canvasPositionStandOn:hover {
+#canvasPositionStandOn:hover,
+#canvasLineupLanded:hover {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
     transform: scale(1.05);
 }

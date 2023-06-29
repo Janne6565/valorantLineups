@@ -19,12 +19,25 @@
             </div>
 
             <div class="backgroundImage" v-bind:style="{backgroundImage: 'url(' + selectedImage1 + ')'}">
-                <div class="left">
-                    <canvas id="canvasPositionStandOn" width="1920" height="1080"
-                        v-bind:style="{backgroundImage: 'url(' + selectedImage2 + ')'}" @click="switchImages"></canvas>
+                <div class="top">
+                    <div class="left">
+                        <canvas id="canvasPositionStandOn" width="1920" height="1080"
+                            v-bind:style="{backgroundImage: 'url(' + selectedImage2 + ')'}"
+                            @click="switchImages"></canvas>
+                    </div>
+                    <div class="right">
+                        <canvas id="canvasPositionLineup"></canvas>
+                    </div>
                 </div>
-                <div class="right">
-                    <canvas id="canvasPositionLineup"></canvas>
+                <div class="bot">
+                    <div class="left">
+                        <canvas id="canvasLineupLanded" width="1920" height="1080"
+                            v-bind:style="{backgroundImage: 'url(' + selectedImage3 + ')'}"
+                            @click="switchImages2"></canvas>
+                    </div>
+                    <div class="right">
+
+                    </div>
                 </div>
             </div>
             <i class="fa-solid fa-x fa-2x" @click="resetPopup()"></i>
@@ -141,9 +154,14 @@
                     </div>
                 </div>
 
-                <canvas id="canvasMapDisplay" width="1920" height="1080">
+                <div class="bot">
+                    <canvas id="canvasMapDisplay" width="1920" height="1080">
 
-                </canvas>
+                    </canvas>
+                    <h2 class="headingBot">
+                        Click on a Lineup to see more Informations
+                    </h2>
+                </div>
             </section>
             <section v-if="activePage == 'upload'" class="uploadSection">
                 <section v-if="!isLoggedIn">
@@ -195,19 +213,35 @@
                                             Upload Image Here
                                         </span>
                                     </label>
+
+                                    <input class="box__file" type="file" name="imageLandOn" id="imageLandOn"
+                                        @change="fileUploaded" accept="image/png, image/jpeg" />
+                                    <label for="imageLandOn" id="labelLandOn">
+                                        <strong>Ability Landed</strong>
+                                        <span class="box__dragndrop">
+                                            Upload Image Here
+                                        </span>
+                                    </label>
                                 </div>
-                                <button @click="submitLineup()">Submit Lineup</button>
+                                <button @click="submitLineup()" :disabled="isUploading">
+                                    <template v-if="!isUploading">
+                                        Submit Lineup
+                                    </template>
+                                    <template v-else>
+                                        Uploading
+                                    </template>
+                                </button>
                             </div>
                             <div class="positionSelection">
                                 <canvas id="canvasLineupCreator" width="1920" height="1920">
                                 </canvas>
                                 <p class="hint">
-                                    Press 
+                                    Press
                                     <b>Left Click</b>
                                     to select the spot for you to Stand on
 
                                     <br>
-                                    Press 
+                                    Press
                                     <b>Right Click</b>
                                     to select the Spot for your Lineup to Land
 
@@ -220,6 +254,14 @@
                         </div>
                     </div>
                 </section>
+            </section>
+            <section v-if="activePage == 'user'" class="userSection">
+                <h1>Your Lineups</h1>
+                <div class="lineups">
+                    <div class="lineup" v-for="lineup in userLineups">
+                        {{lineup}}
+                    </div>
+                </div>
             </section>
         </section>
     </div>

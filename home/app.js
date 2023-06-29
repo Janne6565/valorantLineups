@@ -55,6 +55,9 @@ let vue = new Vue({
     spots: [],
     selectedImage1: "",
     selectedImage2: "",
+    selectedImage3: "",
+    userLineups: [],
+    isUploading: false,
   },
   watch: {
     "uploadInput.agent": function () {
@@ -65,6 +68,22 @@ let vue = new Vue({
     },
   },
   methods: {
+    loadUserLineups: function () {
+      let self = this;
+
+      let authKey = getCookie("vtUserAuth");
+      let userId = getCookie("vtUserId");
+
+      let lineups = getUserLineups(userId, authKey, (lineups) => {
+        let json = JSON.parse(lineups);
+
+        let data = json["data"];
+
+        self.userLineups = data;
+
+        console.log(data);
+      });
+    },
     creatorCanvasMouseMove: function (e) {
       let self = this;
 
@@ -75,8 +94,13 @@ let vue = new Vue({
       let self = this;
       let imageLookingAt = document.getElementById("file").files[0];
       let imageStandOn = document.getElementById("imagePosition").files[0];
+      let imageLandOn = document.getElementById("imageLandOn").files[0];
 
-      if (imageLookingAt == null && imageStandOn == null) {
+      if (
+        imageLookingAt == null ||
+        imageStandOn == null ||
+        imageLandOn == null
+      ) {
         alert("Please select an image");
         return;
       }
@@ -114,9 +138,13 @@ let vue = new Vue({
       const userAuth = getCookie("vtUserAuth");
       const userId = getCookie("vtUserId");
 
+      self.isUploading = true;
+      console.log("Uploading");
+
       createLineup(
         imageLookingAt,
         imageStandOn,
+        imageLandOn,
         this.uploadInput.agent,
         this.uploadInput.ability,
         this.uploadInput.from,
@@ -127,10 +155,21 @@ let vue = new Vue({
           if (status == 200) {
             self.updateCreatorCanvas();
             self.refreshSelectors();
+            self.uploadInput = {
+              "map": null,
+              "agent": null,
+              "ability": null,
+              "from": null,
+              "to": null,
+            };
+            document.getElementById("file").value = null;
+            document.getElementById("imagePosition").value = null;
+            document.getElementById("imageLandOn").value = null;
             alert("Lineup created");
           } else {
             alert("Something went wrong");
           }
+          self.isUploading = false;
         }
       );
     },
@@ -278,7 +317,7 @@ let vue = new Vue({
             let x = (spot["PosX"] / 1000) * canvas.width;
             let y = (spot["PosY"] / 1000) * canvas.height;
 
-            let color = "blue";
+            let color = "#e9f5a6";
 
             if (spot["ID"] == self.uploadInput.from) {
               color = "red";
@@ -306,7 +345,7 @@ let vue = new Vue({
               spotFrom.y,
               spotTo.x,
               spotTo.y,
-              "red",
+              "#d1e65c",
               30
             );
           }
@@ -572,9 +611,33 @@ let vue = new Vue({
             ctx.fillStyle = "#d1e65c";
             ctx.fill();
           };
-
           self.selectedImage2 = lineup.ImageStandOn;
           self.selectedImage1 = lineup.ImageLineup;
+          self.selectedImage3 = lineup.ImageLandOn;
+
+          if (
+            self.selectedImage1 == "" ||
+            self.selectedImage1 == null ||
+            self.selectedImage1 == undefined
+          ) {
+            self.selectedImage1 = "../assets/noImageUploaded.png";
+          }
+
+          if (
+            self.selectedImage2 == "" ||
+            self.selectedImage2 == null ||
+            self.selectedImage2 == undefined
+          ) {
+            self.selectedImage2 = "../assets/noImageUploaded.png";
+          }
+
+          if (
+            self.selectedImage3 == "" ||
+            self.selectedImage3 == null ||
+            self.selectedImage3 == undefined
+          ) {
+            self.selectedImage3 = "../assets/noImageUploaded.png";
+          }
         }
       });
     },
@@ -583,9 +646,14 @@ let vue = new Vue({
       this.selectedImage1 = this.selectedImage2;
       this.selectedImage2 = imageBackup;
     },
+    switchImages2: function () {
+      let imageBackup = this.selectedImage3;
+      this.selectedImage3 = this.selectedImage1;
+      this.selectedImage1 = imageBackup;
+    },
     refreshCanvas: function (recall = Function) {
       let self = this;
-      let image = new Image();
+      let mapImage = new Image();
       let canvas = document.getElementById("canvasMapDisplay");
       if (canvas != null) {
         let ctx = canvas.getContext("2d");
@@ -594,12 +662,12 @@ let vue = new Vue({
           if (this.selection.map == null) {
             return;
           }
-          image.src = this.maps[this.selection.map - 1]["MapImagePath"];
-          image.onload = function () {
-            canvas.width = image.width;
-            canvas.height = image.height;
+          mapImage.src = this.maps[this.selection.map - 1]["MapImagePath"];
+          mapImage.onload = function () {
+            canvas.width = mapImage.width;
+            canvas.height = mapImage.height;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.drawImage(image, 0, 0);
+            ctx.drawImage(mapImage, 0, 0);
 
             for (const lineup of self.activeLineups) {
               if (lineup["AbilityId"] != self.selection.ability) {
@@ -614,6 +682,8 @@ let vue = new Vue({
 
               const toSpotX = (toSpot["PosX"] / 1000) * canvas.width;
               const toSpotY = (toSpot["PosY"] / 1000) * canvas.height;
+
+              const abilityType = lineup["Ability"]["Type"];
 
               const colors = {
                 1: "#E9F5A6",
@@ -631,20 +701,16 @@ let vue = new Vue({
                 ctx.lineWidth = 3;
               }
 
-              canvas_arrow(
+              const abilityDrawFunction = abilityDrawfunctions[abilityType];
+
+              abilityDrawFunction(
                 ctx,
                 fromSpotX,
                 fromSpotY,
                 toSpotX,
                 toSpotY,
-                color,
-                10
+                color
               );
-
-              ctx.beginPath();
-              ctx.arc(fromSpotX, fromSpotY, 5, 0, 2 * Math.PI);
-              ctx.fillStyle = color;
-              ctx.fill();
             }
             recall();
           };
@@ -759,18 +825,18 @@ let vue = new Vue({
     resetPopup: function () {
       this.isLineupShown = false;
     },
-    fileUploaded: function() {
-      console.log("fileUploaded")
+    fileUploaded: function () {
+      console.log("fileUploaded");
 
       let fileLookAt = document.getElementById("file").files[0];
       let labelLookAt = document.getElementById("labelLookAt");
 
       if (fileLookAt != null) {
         labelLookAt.classList.add("valid");
-      } else { 
+      } else {
         labelLookAt.classList.remove("valid");
       }
-      
+
       let fileStandAt = document.getElementById("imagePosition").files[0];
       let labelPosition = document.getElementById("labelPosition");
 
@@ -779,7 +845,16 @@ let vue = new Vue({
       } else {
         labelPosition.classList.remove("valid");
       }
-    }
+
+      let fileLandOn = document.getElementById("imageLandOn").files[0];
+      let labelLandOn = document.getElementById("labelLandOn");
+
+      if (fileLandOn != null) {
+        labelLandOn.classList.add("valid");
+      } else {
+        labelLandOn.classList.remove("valid");
+      }
+    },
   },
   mounted: function () {},
   created: function () {
@@ -799,6 +874,7 @@ let vue = new Vue({
     this.loadAgents();
     this.testLogin();
     this.loadDemoLineups();
+    this.loadUserLineups();
 
     document.body.onmousedown = function (e) {
       if (e.button == 1) {

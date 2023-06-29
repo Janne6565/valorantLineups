@@ -10,7 +10,7 @@ include "../database.php";
 
 $params = getParams(array("lineupId"));
 
-$sql = "SELECT Lineups.ID, Lineups.UserId, Approved, AbilityId, DateCreated, ImageLineup, ImageStandOn, FromSpotId, ToSpotId, Users.Username FROM Lineups, Users WHERE Users.ID = Lineups.UserId AND Lineups.ID = ?";
+$sql = "SELECT Lineups.ID, Lineups.UserId, Approved, AbilityId, DateCreated, ImageLineup, ImageStandOn, ImageLandOn, FromSpotId, ToSpotId, Users.Username FROM Lineups, Users WHERE Users.ID = Lineups.UserId AND Lineups.ID = ?";
 
 $conn = connect();
 
